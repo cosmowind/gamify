@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>According.Work 游戏化开发协作平台</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-gamepad"></i>
+                <span>According.Work</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="architecture.html">系统架构</a></li>
+                <li><a href="task-center.html">任务中心</a></li>
+                <li><a href="user-panel.html">个人面板</a></li>
+                <li><a href="collaboration.html">团队协作</a></li>
+                <li><a href="roadmap.html">实施路线</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 英雄区域 -->
+        <section class="hero">
+            <div class="hero-container">
+                <h1 class="hero-title">
+                    <span class="gradient-text">According.Work</span>
+                    <br>游戏化开发协作平台
+                </h1>
+                <p class="hero-subtitle">
+                    面向需求取舍游戏要素与机制，构建既能促进团队协作又能保持开发效率的游戏化平台
+                </p>
+                <div class="hero-buttons">
+                    <a href="task-center.html" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        体验任务中心
+                    </a>
+                    <a href="architecture.html" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        了解更多
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="card card-1">
+                        <i class="fas fa-trophy"></i>
+                        <span>经验系统</span>
+                    </div>
+                    <div class="card card-2">
+                        <i class="fas fa-level-up-alt"></i>
+                        <span>等级认证</span>
+                    </div>
+                    <div class="card card-3">
+                        <i class="fas fa-tasks"></i>
+                        <span>任务管理</span>
+                    </div>
+                    <div class="card card-4">
+                        <i class="fas fa-medal"></i>
+                        <span>勋章系统</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心价值映射 -->
+        <section class="core-values">
+            <div class="container">
+                <h2 class="section-title">核心价值映射</h2>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>经验</h3>
+                        <p>努力程度的量化</p>
+                        <div class="value-detail">
+                            通过项目贡献、代码审查、问题发现三个维度量化个人努力程度
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>等级</h3>
+                        <p>技能能力的认证</p>
+                        <div class="value-detail">
+                            基于技术栈的多维度能力评估，通过任务完成情况认证技能等级
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>任务</h3>
+                        <p>时效性驱动的工作单元</p>
+                        <div class="value-detail">
+                            智能DDL管理，动态奖惩机制，确保项目进度和质量平衡
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h3>令牌</h3>
+                        <p>权限管理与新手保护</p>
+                        <div class="value-detail">
+                            分级权限体系，新手优先保护机制，防止技能垄断
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>勋章</h3>
+                        <p>团队共同经历的纪念</p>
+                        <div class="value-detail">
+                            记录团队成长历程，增强归属感，支持NFT集成和交易
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>面板</h3>
+                        <p>个人成长的可视化展示</p>
+                        <div class="value-detail">
+                            DND风格角色卡设计，技能树展示，成长轨迹可视化
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 设计目标 -->
+        <section class="design-goals">
+            <div class="container">
+                <h2 class="section-title">设计目标</h2>
+                <div class="goals-container">
+                    <div class="goal-category">
+                        <h3><i class="fas fa-handshake"></i> 协作增强</h3>
+                        <ul>
+                            <li>建立代码审查互评机制，提升代码质量</li>
+                            <li>通过组队任务促进团队协作</li>
+                            <li>动态DDL和激励机制确保项目进度</li>
+                        </ul>
+                    </div>
+                    <div class="goal-category">
+                        <h3><i class="fas fa-balance-scale"></i> 平衡性设计</h3>
+                        <ul>
+                            <li>防止简单任务与复杂任务收益失衡</li>
+                            <li>确保新成员有合适的成长环境</li>
+                            <li>避免技能垄断，促进知识传递</li>
+                        </ul>
+                    </div>
+                    <div class="goal-category">
+                        <h3><i class="fas fa-seedling"></i> 可持续发展</h3>
+                        <ul>
+                            <li>疲劳值管理，维护团队健康</li>
+                            <li>通过等级、勋章等维持长期参与动力</li>
+                            <li>增强团队凝聚力和归属感</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 系统预览 -->
+        <section class="system-preview">
+            <div class="container">
+                <h2 class="section-title">系统预览</h2>
+                <div class="preview-grid">
+                    <a href="task-center.html" class="preview-card">
+                        <div class="preview-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>任务中心</h3>
+                        <p>智能任务分配，可视化排队系统</p>
+                        <div class="preview-demo">
+                            <div class="mini-task-flow">
+                                <div class="mini-task urgent">紧急</div>
+                                <div class="arrow">→</div>
+                                <div class="mini-developer expert">高手</div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="user-panel.html" class="preview-card">
+                        <div class="preview-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3>个人面板</h3>
+                        <p>技能树展示，成长轨迹可视化</p>
+                        <div class="preview-demo">
+                            <div class="mini-skill-tree">
+                                <div class="skill-node active">React</div>
+                                <div class="skill-node">Node.js</div>
+                                <div class="skill-node locked">Docker</div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="collaboration.html" class="preview-card">
+                        <div class="preview-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>团队协作</h3>
+                        <p>师徒系统，组队机制</p>
+                        <div class="preview-demo">
+                            <div class="mini-team">
+                                <div class="team-member mentor">导师</div>
+                                <div class="team-member newbie">新手</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 According.Work 游戏化开发协作平台方案预览</p>
+        </div>
+    </footer>
+
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html> 

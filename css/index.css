@@ -1,0 +1,475 @@
+/* 英雄区域 */
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    padding: 100px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.03"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    animation: float 20s ease-in-out infinite;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.floating-cards {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.floating-cards .card {
+    position: absolute;
+    width: 120px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #667eea;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: float 4s ease-in-out infinite;
+}
+
+.floating-cards .card i {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.card-1 {
+    top: 0;
+    left: 0;
+    animation-delay: 0s;
+}
+
+.card-2 {
+    top: 0;
+    right: 0;
+    animation-delay: 1s;
+}
+
+.card-3 {
+    bottom: 0;
+    left: 0;
+    animation-delay: 2s;
+}
+
+.card-4 {
+    bottom: 0;
+    right: 0;
+    animation-delay: 3s;
+}
+
+/* 核心价值映射 */
+.core-values {
+    padding: 100px 0;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.value-item {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.value-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.value-item:hover::before {
+    transform: scale(1);
+}
+
+.value-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.value-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.value-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.value-item h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.value-item p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.value-detail {
+    color: #777;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+/* 设计目标 */
+.design-goals {
+    padding: 100px 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.goals-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.goal-category {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.goal-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.goal-category h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.goal-category h3 i {
+    font-size: 1.8rem;
+    color: #667eea;
+}
+
+.goal-category ul {
+    list-style: none;
+}
+
+.goal-category li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    position: relative;
+    padding-left: 25px;
+}
+
+.goal-category li:last-child {
+    border-bottom: none;
+}
+
+.goal-category li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+}
+
+/* 系统预览 */
+.system-preview {
+    padding: 100px 0;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.preview-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.preview-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.preview-card:hover::before {
+    left: 100%;
+}
+
+.preview-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.preview-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.preview-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.preview-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.preview-card p {
+    color: #666;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.preview-demo {
+    position: relative;
+    z-index: 2;
+}
+
+.mini-task-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.mini-task {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: #ff6b6b;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.mini-developer {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: #4ecdc4;
+    color: white;
+}
+
+.arrow {
+    font-size: 1.2rem;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.mini-skill-tree {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skill-node {
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 2px solid #ddd;
+    color: #999;
+}
+
+.skill-node.active {
+    background: #667eea;
+    color: white;
+    border-color: #667eea;
+}
+
+.skill-node.locked {
+    background: #f5f5f5;
+    color: #ccc;
+    border-color: #eee;
+}
+
+.mini-team {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.team-member {
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.team-member.mentor {
+    background: #ffd93d;
+    color: #333;
+}
+
+.team-member.newbie {
+    background: #6bcf7f;
+    color: white;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .values-grid,
+    .goals-container,
+    .preview-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .floating-cards {
+        width: 250px;
+        height: 250px;
+    }
+
+    .floating-cards .card {
+        width: 100px;
+        height: 70px;
+        font-size: 0.8rem;
+    }
+} 

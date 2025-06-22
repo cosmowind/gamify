@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>任务中心 - According.Work 游戏化协作平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 头部区域 */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .level-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 20px;
+        }
+
+        /* 左侧面板 */
+        .left-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            height: fit-content;
+        }
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .filter-section {
+            margin-bottom: 25px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+        }
+
+        .filter-label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 6px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 12px;
+        }
+
+        .filter-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        /* 个人任务队列 */
+        .task-queue {
+            background: #f8f9ff;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .queue-item {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .queue-item.current {
+            border-left-color: #ff6b6b;
+            background: linear-gradient(45deg, #fff, #fff5f5);
+        }
+
+        .queue-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .queue-status {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* 中间任务列表 */
+        .task-list-area {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            width: 300px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .task-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .task-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .task-card-header {
+            display: flex;
+            justify-content: between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .task-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .task-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .task-tag {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .tag-difficulty-simple {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .tag-difficulty-normal {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .tag-difficulty-hard {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+
+        .tag-type-regular {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .tag-type-competitive {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .tag-type-team {
+            background: #e8f5e8;
+            color: #388e3c;
+        }
+
+        .task-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .task-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .task-reward {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            color: #667eea;
+        }
+
+        .task-deadline {
+            font-size: 14px;
+            color: #ff6b6b;
+        }
+
+        .apply-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .apply-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* 右侧面板 */
+        .right-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            height: fit-content;
+        }
+
+        .skill-tree {
+            margin-bottom: 25px;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .skill-name {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .skill-level {
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .achievement-section {
+            margin-bottom: 25px;
+        }
+
+        .achievement-item {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .token-info {
+            background: #f8f9ff;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .token-type {
+            font-size: 16px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .token-stats {
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 250px 1fr 250px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .left-panel, .right-panel {
+                order: 2;
+            }
+            
+            .task-list-area {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .task-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部区域 -->
+        <div class="header">
+            <div class="header-top">
+                <div class="logo">According.Work 任务中心</div>
+                <div class="user-info">
+                    <div class="user-avatar">张三</div>
+                    <div class="user-stats">
+                        <div class="stat-item">
+                            <span>等级</span>
+                            <span class="level-badge">前端 Lv.3</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>经验值</span>
+                            <span class="stat-value">2,456</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主要内容区域 -->
+        <div class="main-content">
+            <!-- 左侧筛选面板 -->
+            <div class="left-panel">
+                <div class="panel-title">任务筛选</div>
+                
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <div class="filter-label">任务类型</div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">全部</button>
+                            <button class="filter-btn" data-filter="regular">常规任务</button>
+                            <button class="filter-btn" data-filter="competitive">竞技任务</button>
+                            <button class="filter-btn" data-filter="team">组队任务</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-label">难度等级</div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all-difficulty">全部</button>
+                            <button class="filter-btn" data-filter="simple">简单</button>
+                            <button class="filter-btn" data-filter="normal">标准</button>
+                            <button class="filter-btn" data-filter="hard">困难</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <div class="filter-label">技能要求</div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn" data-filter="frontend">前端开发</button>
+                            <button class="filter-btn" data-filter="backend">后端开发</button>
+                            <button class="filter-btn" data-filter="fullstack">全栈</button>
+                            <button class="filter-btn" data-filter="design">UI设计</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-title">我的任务队列</div>
+                <div class="task-queue">
+                    <div class="queue-item current">
+                        <div class="queue-title">🔥 用户登录页面重构</div>
+                        <div class="queue-status">进行中 · 还剩2天</div>
+                    </div>
+                    <div class="queue-item">
+                        <div class="queue-title">📱 移动端适配优化</div>
+                        <div class="queue-status">排队中 · 第1位</div>
+                    </div>
+                    <div class="queue-item">
+                        <div class="queue-title">🐛 购物车bug修复</div>
+                        <div class="queue-status">排队中 · 第2位</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中间任务列表 -->
+            <div class="task-list-area">
+                <div class="task-header">
+                    <div class="panel-title">可领取任务</div>
+                    <input type="text" class="search-box" placeholder="搜索任务...">
+                </div>
+
+                <div class="task-grid">
+                    <!-- 任务卡片1 -->
+                    <div class="task-card" data-type="regular" data-difficulty="normal">
+                        <div class="task-card-header">
+                            <div>
+                                <div class="task-title">商品详情页性能优化</div>
+                                <div class="task-meta">
+                                    <span class="task-tag tag-type-regular">常规任务</span>
+                                    <span class="task-tag tag-difficulty-normal">标准难度</span>
+                                    <span class="task-tag">前端开发</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-description">
+                            优化商品详情页加载速度，减少首屏渲染时间，实现图片懒加载和缓存策略。预期提升30%的页面性能。
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-reward">
+                                ⭐ +180 经验值
+                            </div>
+                            <div class="task-deadline">截止：3天后</div>
+                            <button class="apply-btn">申请任务</button>
+                        </div>
+                    </div>
+
+                    <!-- 任务卡片2 -->
+                    <div class="task-card" data-type="competitive" data-difficulty="hard">
+                        <div class="task-card-header">
+                            <div>
+                                <div class="task-title">🏆 API网关架构设计竞技</div>
+                                <div class="task-meta">
+                                    <span class="task-tag tag-type-competitive">竞技任务</span>
+                                    <span class="task-tag tag-difficulty-hard">高难度</span>
+                                    <span class="task-tag">后端开发</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-description">
+                            设计高可用、高性能的API网关架构方案。两人竞技，最优方案获胜。需要考虑负载均衡、安全性、监控等方面。
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-reward">
+                                🏆 +350 经验值
+                            </div>
+                            <div class="task-deadline">截止：5天后</div>
+                            <button class="apply-btn">参与竞技</button>
+                        </div>
+                    </div>
+
+                    <!-- 任务卡片3 -->
+                    <div class="task-card" data-type="team" data-difficulty="normal">
+                        <div class="task-card-header">
+                            <div>
+                                <div class="task-title">👥 用户管理系统重构</div>
+                                <div class="task-meta">
+                                    <span class="task-tag tag-type-team">组队任务</span>
+                                    <span class="task-tag tag-difficulty-normal">标准难度</span>
+                                    <span class="task-tag">全栈开发</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-description">
+                            重构现有用户管理系统，包括前端界面升级、后端API优化、数据库结构调整。需要3-4人团队协作完成。
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-reward">
+                                👥 +240 经验值
+                            </div>
+                            <div class="task-deadline">截止：7天后</div>
+                            <button class="apply-btn">加入团队</button>
+                        </div>
+                    </div>
+
+                    <!-- 任务卡片4 -->
+                    <div class="task-card" data-type="regular" data-difficulty="simple">
+                        <div class="task-card-header">
+                            <div>
+                                <div class="task-title">文档更新与维护</div>
+                                <div class="task-meta">
+                                    <span class="task-tag tag-type-regular">常规任务</span>
+                                    <span class="task-tag tag-difficulty-simple">简单</span>
+                                    <span class="task-tag">文档撰写</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-description">
+                            更新项目README文档，补充API使用说明，完善开发环境搭建指南。适合新手练习。
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-reward">
+                                📝 +60 经验值
+                            </div>
+                            <div class="task-deadline">截止：2天后</div>
+                            <button class="apply-btn">申请任务</button>
+                        </div>
+                    </div>
+
+                    <!-- 任务卡片5 -->
+                    <div class="task-card" data-type="regular" data-difficulty="hard">
+                        <div class="task-card-header">
+                            <div>
+                                <div class="task-title">微服务架构迁移</div>
+                                <div class="task-meta">
+                                    <span class="task-tag tag-type-regular">常规任务</span>
+                                    <span class="task-tag tag-difficulty-hard">高难度</span>
+                                    <span class="task-tag">架构设计</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-description">
+                            将单体应用拆分为微服务架构，设计服务边界，实现服务间通信，配置服务发现和注册中心。
+                        </div>
+                        <div class="task-footer">
+                            <div class="task-reward">
+                                🚀 +420 经验值
+                            </div>
+                            <div class="task-deadline">截止：10天后</div>
+                            <button class="apply-btn">申请任务</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧个人信息面板 -->
+            <div class="right-panel">
+                <div class="panel-title">技能等级</div>
+                <div class="skill-tree">
+                    <div class="skill-item">
+                        <span class="skill-name">前端开发</span>
+                        <span class="skill-level">Lv.3</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">后端开发</span>
+                        <span class="skill-level">Lv.2</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">数据库设计</span>
+                        <span class="skill-level">Lv.2</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">DevOps</span>
+                        <span class="skill-level">Lv.1</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">测试工程</span>
+                        <span class="skill-level">Lv.1</span>
+                    </div>
+                </div>
+
+                <div class="panel-title">近期成就</div>
+                <div class="achievement-section">
+                    <div class="achievement-item">🏆 连续完美完成5个任务</div>
+                    <div class="achievement-item">🎯 首次参与竞技任务</div>
+                    <div class="achievement-item">👥 优秀团队协作者</div>
+                </div>
+
+                <div class="panel-title">令牌信息</div>
+                <div class="token-info">
+                    <div class="token-type">🎯 普通令牌</div>
+                    <div class="token-stats">
+                        <div>
+                            <div class="stat-value">3</div>
+                            <div>队列容量</div>
+                        </div>
+                        <div>
+                            <div class="stat-value">1,250</div>
+                            <div>贡献值</div>
+                        </div>
+                        <div>
+                            <div class="stat-value">85%</div>
+                            <div>完成率</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 筛选功能
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 更新筛选按钮状态
+                this.parentNode.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // 执行筛选逻辑
+                filterTasks();
+            });
+        });
+
+        // 搜索功能
+        document.querySelector('.search-box').addEventListener('input', function() {
+            filterTasks();
+        });
+
+        function filterTasks() {
+            const searchTerm = document.querySelector('.search-box').value.toLowerCase();
+            const activeFilters = {
+                type: document.querySelector('.filter-btn[data-filter]:not([data-filter*="difficulty"]).active')?.dataset.filter || 'all',
+                difficulty: document.querySelector('.filter-btn[data-filter*="difficulty"].active')?.dataset.filter || 'all-difficulty'
+            };
+
+            document.querySelectorAll('.task-card').forEach(card => {
+                const title = card.querySelector('.task-title').textContent.toLowerCase();
+                const description = card.querySelector('.task-description').textContent.toLowerCase();
+                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                
+                const cardType = card.dataset.type;
+                const cardDifficulty = card.dataset.difficulty;
+                
+                const matchesType = activeFilters.type === 'all' || cardType === activeFilters.type;
+                const matchesDifficulty = activeFilters.difficulty === 'all-difficulty' || cardDifficulty === activeFilters.difficulty.replace('all-', '');
+                
+                card.style.display = matchesSearch && matchesType && matchesDifficulty ? 'block' : 'none';
+            });
+        }
+
+        // 任务申请功能
+        document.querySelectorAll('.apply-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const taskTitle = this.closest('.task-card').querySelector('.task-title').textContent;
+                
+                // 检查队列是否已满
+                const currentQueueSize = document.querySelectorAll('.queue-item').length;
+                if (currentQueueSize >= 4) { // 1个当前任务 + 3个排队任务
+                    alert('任务队列已满，请先完成当前任务再申请新任务');
+                    return;
+                }
+                
+                // 模拟申请成功
+                this.textContent = '申请成功';
+                this.disabled = true;
+                this.style.background = '#4caf50';
+                
+                // 添加到任务队列
+                const queue = document.querySelector('.task-queue');
+                const newQueueItem = document.createElement('div');
+                newQueueItem.className = 'queue-item';
+                newQueueItem.innerHTML = `
+                    <div class="queue-title">${taskTitle}</div>
+                    <div class="queue-status">排队中 · 第${currentQueueSize}位</div>
+                `;
+                queue.appendChild(newQueueItem);
+                
+                setTimeout(() => {
+                    this.textContent = '已申请';
+                }, 2000);
+            });
+        });
+
+        // 添加任务卡片悬停效果
+        document.querySelectorAll('.task-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // 模拟实时更新
+        setInterval(() => {
+            // 随机更新一些数字来模拟实时性
+            const expValue = document.querySelector('.stat-value');
+            if (expValue && Math.random() > 0.8) {
+                const currentExp = parseInt(expValue.textContent.replace(',', ''));
+                expValue.textContent = (currentExp + Math.floor(Math.random() * 10)).toLocaleString();
+            }
+        }, 5000);
+    </script>
+</body>
+</html> 
