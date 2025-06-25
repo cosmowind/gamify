@@ -5,7 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub技能评估 - According.Work 游戏化平台</title>
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* 头部区域样式 */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #666;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .level-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
         .skills-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -116,72 +205,87 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <a href="index.html">According.Work 游戏化平台</a>
+    <div class="container">
+            <!-- 头部区域 -->
+            <div class="header">
+                <div class="header-top">
+                    <div class="header-nav">
+                        <div class="logo">According.Work</div>
+                        <ul class="nav-menu">
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="level-calculator.html">等级计算器</a></li>
+                            <li><a href="task-center.html">任务中心</a></li>
+                            <li><a href="character-panel.html">人物面板</a></li>
+                            <li><a href="token-system.html">令牌系统</a></li>
+                            <li><a href="github-skills.html" class="active">GitHub技能</a></li>
+                        </ul>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">张三</div>
+                        <div class="user-stats">
+                            <div class="stat-item">
+                                <span>AW等级</span>
+                                <span class="level-badge">Lv.15</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>经验值</span>
+                                <span class="stat-value">8,450</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="level-calculator.html">等级计算器</a></li>
-                    <li><a href="task-center.html">任务中心</a></li>
-                    <li><a href="character-panel.html">人物面板</a></li>
-                    <li><a href="token-system.html">令牌系统</a></li>
-                    <li><a href="github-skills.html" class="active">GitHub技能</a></li>
-                </ul>
             </div>
-        </nav>
-    </header>
-
-    <main class="skills-container">
-        <!-- GitHub系统概览 -->
-        <div class="github-overview">
-            <div class="github-logo">🐙</div>
-            <div class="overview-content">
-                <div class="overview-title">GitHub 技能评估系统</div>
-                <div class="overview-desc">
-                    通过分析GitHub仓库数据，客观评估开发者的技术能力，包括代码质量、项目复杂度、
-                    技术栈掌握程度、贡献频率等多维度指标，与平台等级系统完全独立运行。
+            
+            <div class="skills-container">
+                <!-- GitHub系统概览 -->
+                <div class="github-overview">
+                    <div class="github-logo">🐙</div>
+                    <div class="overview-content">
+                        <div class="overview-title">GitHub 技能评估系统</div>
+                        <div class="overview-desc">
+                            通过分析GitHub仓库数据，客观评估开发者的技术能力，包括代码质量、项目复杂度、
+                            技术栈掌握程度、贡献频率等多维度指标，与平台等级系统完全独立运行。
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- 统计数据卡片 -->
-        <div class="github-stats">
-            <div class="stat-card">
-                <div class="stat-icon stat-repos">📁</div>
-                <div class="stat-value">23</div>
-                <div class="stat-label">活跃仓库</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon stat-commits">📝</div>
-                <div class="stat-value">1,247</div>
-                <div class="stat-label">总提交数</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon stat-quality">⭐</div>
-                <div class="stat-value">8.7</div>
-                <div class="stat-label">代码质量分</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon stat-prs">🔄</div>
-                <div class="stat-value">156</div>
-                <div class="stat-label">PR合并数</div>
-            </div>
-        </div>
+                <!-- 统计数据卡片 -->
+                <div class="github-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-repos">📁</div>
+                        <div class="stat-value">23</div>
+                        <div class="stat-label">活跃仓库</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-commits">📝</div>
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-label">总提交数</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-quality">⭐</div>
+                        <div class="stat-value">8.7</div>
+                        <div class="stat-label">代码质量分</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-prs">🔄</div>
+                        <div class="stat-value">156</div>
+                        <div class="stat-label">PR合并数</div>
+                    </div>
+                </div>
 
-        <!-- 对比说明 -->
-        <div class="comparison-note">
-            <div class="comparison-title">⚖️ 双重评估系统的优势</div>
-            <div class="comparison-text">
-                <strong>等级系统</strong>：衡量平台参与度和努力程度，确保新手能够通过积极参与获得平台权益，
+                <!-- 对比说明 -->
+                <div class="comparison-note">
+                    <div class="comparison-title">⚖️ 双重评估系统的优势</div>
+                    <div class="comparison-text">
+                                        <strong>AW等级系统</strong>：衡量平台参与度和努力程度，确保新手能够通过积极参与获得平台权益，
                 促进知识分享和团队协作。<br><br>
                 <strong>GitHub技能系统</strong>：客观评估技术能力，为任务分配提供技能匹配依据，
                 避免主观判断偏差，确保项目质量。<br><br>
                 两个系统相互独立但互为补充，既保证了公平性，又提升了专业性。
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
+    </div>
 </body>
 </html>

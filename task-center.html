@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>任务中心 - According.Work 游戏化协作平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -784,382 +785,381 @@
                 </div>
                 <div class="user-info">
                     <div class="user-avatar">张三</div>
-                    <div class="user-stats">
-                        <div class="stat-item">
-                            <span>等级</span>
-                            <span class="level-badge">前端 Lv.3</span>
+                                            <div class="user-stats">
+                            <div class="stat-item">
+                                <span>AW等级</span>
+                                <span class="level-badge">Lv.15</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>经验值</span>
+                                <span class="stat-value">8,450</span>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <span>经验值</span>
-                            <span class="stat-value">2,456</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-
         <!-- 系统介绍 -->
         <div class="system-intro">
-            <div class="intro-title">📋 任务系统</div>
-            <div class="intro-desc">
-                让去中心化合作能自发地达成，实现比肩甚至超越公司制的工作效率。
-                通过时效性驱动和连胜激励机制，引导玩家主动管理任务进度。
-            </div>
-            <div class="key-features">
-                <div class="feature-card">
-                    <div class="feature-icon">⏰</div>
-                    <div class="feature-title">时效性驱动</div>
-                    <div class="feature-desc">基于DDL的奖惩机制</div>
+                <div class="intro-title">📋 任务系统</div>
+                <div class="intro-desc">
+                    让去中心化合作能自发地达成，实现比肩甚至超越公司制的工作效率。
+                    通过时效性驱动和连胜激励机制，引导玩家主动管理任务进度。
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔥</div>
-                    <div class="feature-title">连胜激励</div>
-                    <div class="feature-desc">按时完成获得额外奖励</div>
+                <div class="key-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <div class="feature-title">时效性驱动</div>
+                        <div class="feature-desc">基于DDL的奖惩机制</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔥</div>
+                        <div class="feature-title">连胜激励</div>
+                        <div class="feature-desc">按时完成获得额外奖励</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-title">难度匹配</div>
+                        <div class="feature-desc">防止高手垄断简单任务</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤝</div>
+                        <div class="feature-title">协作优先</div>
+                        <div class="feature-desc">鼓励团队互助完成</div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <div class="feature-title">难度匹配</div>
-                    <div class="feature-desc">防止高手垄断简单任务</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <div class="feature-title">协作优先</div>
-                    <div class="feature-desc">鼓励团队互助完成</div>
-                </div>
-            </div>
         </div>
 
         <!-- 连胜激励系统说明 -->
         <div class="streak-system">
-            <div class="streak-title">
-                <span>🔥</span>
-                <span>连胜激励机制</span>
-            </div>
-            <div class="streak-content">
-                <div class="streak-formula">
-                    <div class="formula-title">激励公式</div>
-                    <div class="formula-text">连胜奖励 = 基础奖励 × (1 + ln(n)%)</div>
-                    <div class="formula-text">超时惩罚 = 基础奖励 × (1 - e^T%)</div>
-                    <small>n = 连胜次数, T = 超时天数</small>
+                <div class="streak-title">
+                    <span>🔥</span>
+                    <span>连胜激励机制</span>
                 </div>
-                <div class="streak-examples">
-                    <div class="formula-title">数值示例</div>
-                    <div class="example-item">
-                        <span>连胜1次</span>
-                        <span class="bonus-positive">+0%</span>
+                <div class="streak-content">
+                    <div class="streak-formula">
+                        <div class="formula-title">激励公式</div>
+                        <div class="formula-text">连胜奖励 = 基础奖励 × (1 + ln(n)%)</div>
+                        <div class="formula-text">超时惩罚 = 基础奖励 × (1 - e^T%)</div>
+                        <small>n = 连胜次数, T = 超时天数</small>
                     </div>
-                    <div class="example-item">
-                        <span>连胜10次</span>
-                        <span class="bonus-positive">+2.3%</span>
-                    </div>
-                    <div class="example-item">
-                        <span>连胜100次</span>
-                        <span class="bonus-positive">+4.6%</span>
-                    </div>
-                    <div class="example-item">
-                        <span>超时1天</span>
-                        <span class="penalty-negative">-2.7%</span>
-                    </div>
-                    <div class="example-item">
-                        <span>超时3天</span>
-                        <span class="penalty-negative">-20.1%</span>
+                    <div class="streak-examples">
+                        <div class="formula-title">数值示例</div>
+                        <div class="example-item">
+                            <span>连胜1次</span>
+                            <span class="bonus-positive">+0%</span>
+                        </div>
+                        <div class="example-item">
+                            <span>连胜10次</span>
+                            <span class="bonus-positive">+2.3%</span>
+                        </div>
+                        <div class="example-item">
+                            <span>连胜100次</span>
+                            <span class="bonus-positive">+4.6%</span>
+                        </div>
+                        <div class="example-item">
+                            <span>超时1天</span>
+                            <span class="penalty-negative">-2.7%</span>
+                        </div>
+                        <div class="example-item">
+                            <span>超时3天</span>
+                            <span class="penalty-negative">-20.1%</span>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
 
         <!-- 主要内容区域 -->
-        <div class="main-content">
-            <!-- 左侧筛选面板 -->
-            <div class="left-panel">
-                <div class="panel-title">📋 任务筛选</div>
-                
-                <div class="filter-section">
-                    <div class="filter-group">
-                        <div class="filter-label">任务重要性</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn active" data-filter="all">全部</button>
-                            <button class="filter-btn" data-filter="main">主线任务</button>
-                            <button class="filter-btn" data-filter="side">支线任务</button>
+            <div class="main-content">
+                <!-- 左侧筛选面板 -->
+                <div class="left-panel">
+                    <div class="panel-title">📋 任务筛选</div>
+                    
+                    <div class="filter-section">
+                        <div class="filter-group">
+                            <div class="filter-label">任务重要性</div>
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" data-filter="all">全部</button>
+                                <button class="filter-btn" data-filter="main">主线任务</button>
+                                <button class="filter-btn" data-filter="side">支线任务</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <div class="filter-label">任务难度</div>
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" data-filter="all-difficulty">全部</button>
+                                <button class="filter-btn" data-filter="simple">简单</button>
+                                <button class="filter-btn" data-filter="normal">标准</button>
+                                <button class="filter-btn" data-filter="hard">困难</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <div class="filter-label">基础奖励</div>
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" data-filter="all-reward">全部</button>
+                                <button class="filter-btn" data-filter="low">低奖励 (1-3)</button>
+                                <button class="filter-btn" data-filter="medium">中奖励 (4-6)</button>
+                                <button class="filter-btn" data-filter="high">高奖励 (7-10)</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="filter-group">
-                        <div class="filter-label">任务难度</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn active" data-filter="all-difficulty">全部</button>
-                            <button class="filter-btn" data-filter="simple">简单</button>
-                            <button class="filter-btn" data-filter="normal">标准</button>
-                            <button class="filter-btn" data-filter="hard">困难</button>
+                    <div class="panel-title">⏰ 我的任务队列</div>
+                    <div class="task-queue">
+                        <div class="queue-item current">
+                            <div class="queue-title">📱 移动端适配优化</div>
+                            <div class="queue-status">进行中 · 剩余2天</div>
+                        </div>
+                        <div class="queue-item">
+                            <div class="queue-title">🛠️ 构建工具配置</div>
+                            <div class="queue-status">排队中 · 第1位</div>
+                        </div>
+                        <div class="queue-item">
+                            <div class="queue-title">📚 API文档补充</div>
+                            <div class="queue-status">排队中 · 第2位</div>
                         </div>
                     </div>
 
-                    <div class="filter-group">
-                        <div class="filter-label">基础奖励</div>
-                        <div class="filter-buttons">
-                            <button class="filter-btn active" data-filter="all-reward">全部</button>
-                            <button class="filter-btn" data-filter="low">低奖励 (1-3)</button>
-                            <button class="filter-btn" data-filter="medium">中奖励 (4-6)</button>
-                            <button class="filter-btn" data-filter="high">高奖励 (7-10)</button>
+                    <!-- 连胜激励计算器 -->
+                    <div class="panel-title">🔥 连胜激励计算器</div>
+                    <div class="streak-calculator">
+                        <div class="calc-input">
+                            <label>连胜次数（n）：</label>
+                            <input type="number" id="streakCount" value="5" min="1" max="100" onchange="calculateStreak()">
+                        </div>
+                        <div class="calc-result">
+                            <div class="result-item">
+                                <span class="result-label">激励倍率：</span>
+                                <span class="result-value" id="streakBonus">1.016x</span>
+                            </div>
+                        </div>
+                        
+                        <div class="calc-input">
+                            <label>超时天数（T）：</label>
+                            <input type="number" id="overtimeDays" value="2" min="1" max="10" onchange="calculateOvertime()">
+                        </div>
+                        <div class="calc-result">
+                            <div class="result-item">
+                                <span class="result-label">惩罚倍率：</span>
+                                <span class="result-value penalty" id="overtimePenalty">0.926x</span>
+                            </div>
+                        </div>
+
+                        <div class="formula-note">
+                            <div style="font-size: 10px; color: #666; margin-top: 10px;">
+                                <div>🔥 连胜激励: 1 + ln(n)%</div>
+                                <div>❌ 超时惩罚: 1 - e^T%</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="panel-title">⏰ 我的任务队列</div>
-                <div class="task-queue">
-                    <div class="queue-item current">
-                        <div class="queue-title">📱 移动端适配优化</div>
-                        <div class="queue-status">进行中 · 剩余2天</div>
+                <!-- 中间任务列表 -->
+                <div class="task-list-area">
+                    <div class="task-header">
+                        <div class="panel-title">可领取任务</div>
+                        <input type="text" class="search-box" placeholder="搜索任务...">
                     </div>
-                    <div class="queue-item">
-                        <div class="queue-title">🛠️ 构建工具配置</div>
-                        <div class="queue-status">排队中 · 第1位</div>
-                    </div>
-                    <div class="queue-item">
-                        <div class="queue-title">📚 API文档补充</div>
-                        <div class="queue-status">排队中 · 第2位</div>
-                    </div>
-                </div>
 
-                            <!-- 连胜激励计算器 -->
-            <div class="panel-title">🔥 连胜激励计算器</div>
-            <div class="streak-calculator">
-                <div class="calc-input">
-                    <label>连胜次数（n）：</label>
-                    <input type="number" id="streakCount" value="5" min="1" max="100" onchange="calculateStreak()">
-                </div>
-                <div class="calc-result">
-                    <div class="result-item">
-                        <span class="result-label">激励倍率：</span>
-                        <span class="result-value" id="streakBonus">1.016x</span>
-                    </div>
-                </div>
-                
-                <div class="calc-input">
-                    <label>超时天数（T）：</label>
-                    <input type="number" id="overtimeDays" value="2" min="1" max="10" onchange="calculateOvertime()">
-                </div>
-                <div class="calc-result">
-                    <div class="result-item">
-                        <span class="result-label">惩罚倍率：</span>
-                        <span class="result-value penalty" id="overtimePenalty">0.926x</span>
-                    </div>
-                </div>
-
-                <div class="formula-note">
-                    <div style="font-size: 10px; color: #666; margin-top: 10px;">
-                        <div>🔥 连胜激励: 1 + ln(n)%</div>
-                        <div>❌ 超时惩罚: 1 - e^T%</div>
-                    </div>
-                </div>
-            </div>
-            </div>
-
-            <!-- 中间任务列表 -->
-            <div class="task-list-area">
-                <div class="task-header">
-                    <div class="panel-title">可领取任务</div>
-                    <input type="text" class="search-box" placeholder="搜索任务...">
-                </div>
-
-                <div class="task-grid">
-                    <!-- 任务卡片1 -->
-                    <div class="task-card" data-type="main" data-difficulty="normal" data-reward="6">
-                        <div class="task-card-header">
-                            <div>
-                                <div class="task-title">商品详情页性能优化</div>
-                                <div class="task-meta">
-                                    <span class="task-tag tag-type-main">主线任务</span>
-                                    <span class="task-tag tag-difficulty-normal">标准难度</span>
-                                    <span class="task-tag tag-reward-medium">基础奖励：6</span>
+                    <div class="task-grid">
+                        <!-- 任务卡片1 -->
+                        <div class="task-card" data-type="main" data-difficulty="normal" data-reward="6">
+                            <div class="task-card-header">
+                                <div>
+                                    <div class="task-title">商品详情页性能优化</div>
+                                    <div class="task-meta">
+                                        <span class="task-tag tag-type-main">主线任务</span>
+                                        <span class="task-tag tag-difficulty-normal">标准难度</span>
+                                        <span class="task-tag tag-reward-medium">基础奖励：6</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="task-description">
-                            优化商品详情页加载速度，减少首屏渲染时间，实现图片懒加载和缓存策略。预期提升30%的页面性能。
-                        </div>
-                        <div class="task-footer">
-                            <div class="task-reward">
-                                💎 基础奖励：6 | 预计经验：180+
+                            <div class="task-description">
+                                优化商品详情页加载速度，减少首屏渲染时间，实现图片懒加载和缓存策略。预期提升30%的页面性能。
                             </div>
-                            <div class="task-deadline">截止：3天后</div>
-                            <button class="apply-btn">申请任务</button>
+                            <div class="task-footer">
+                                <div class="task-reward">
+                                    💎 基础奖励：6 | 预计经验：180+
+                                </div>
+                                <div class="task-deadline">截止：3天后</div>
+                                <button class="apply-btn">申请任务</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 任务卡片2 -->
-                    <div class="task-card" data-type="side" data-difficulty="simple" data-reward="2">
-                        <div class="task-card-header">
-                            <div>
-                                <div class="task-title">文档更新与维护</div>
-                                <div class="task-meta">
-                                    <span class="task-tag tag-type-side">支线任务</span>
-                                    <span class="task-tag tag-difficulty-simple">简单</span>
-                                    <span class="task-tag tag-reward-low">基础奖励：2</span>
+                        <!-- 任务卡片2 -->
+                        <div class="task-card" data-type="side" data-difficulty="simple" data-reward="2">
+                            <div class="task-card-header">
+                                <div>
+                                    <div class="task-title">文档更新与维护</div>
+                                    <div class="task-meta">
+                                        <span class="task-tag tag-type-side">支线任务</span>
+                                        <span class="task-tag tag-difficulty-simple">简单</span>
+                                        <span class="task-tag tag-reward-low">基础奖励：2</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="task-description">
-                            更新项目README文档，补充API使用说明，完善开发环境搭建指南。适合新手练习。
-                        </div>
-                        <div class="task-footer">
-                            <div class="task-reward">
-                                📝 基础奖励：2 | 预计经验：60+
+                            <div class="task-description">
+                                更新项目README文档，补充API使用说明，完善开发环境搭建指南。适合新手练习。
                             </div>
-                            <div class="task-deadline">截止：2天后</div>
-                            <button class="apply-btn">申请任务</button>
+                            <div class="task-footer">
+                                <div class="task-reward">
+                                    📝 基础奖励：2 | 预计经验：60+
+                                </div>
+                                <div class="task-deadline">截止：2天后</div>
+                                <button class="apply-btn">申请任务</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 任务卡片3 -->
-                    <div class="task-card" data-type="main" data-difficulty="hard" data-reward="9">
-                        <div class="task-card-header">
-                            <div>
-                                <div class="task-title">微服务架构迁移</div>
-                                <div class="task-meta">
-                                    <span class="task-tag tag-type-main">主线任务</span>
-                                    <span class="task-tag tag-difficulty-hard">高难度</span>
-                                    <span class="task-tag tag-reward-high">基础奖励：9</span>
+                        <!-- 任务卡片3 -->
+                        <div class="task-card" data-type="main" data-difficulty="hard" data-reward="9">
+                            <div class="task-card-header">
+                                <div>
+                                    <div class="task-title">微服务架构迁移</div>
+                                    <div class="task-meta">
+                                        <span class="task-tag tag-type-main">主线任务</span>
+                                        <span class="task-tag tag-difficulty-hard">高难度</span>
+                                        <span class="task-tag tag-reward-high">基础奖励：9</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="task-description">
-                            将单体应用拆分为微服务架构，设计服务边界，实现服务间通信，配置服务发现和注册中心。
-                        </div>
-                        <div class="task-footer">
-                            <div class="task-reward">
-                                🚀 基础奖励：9 | 预计经验：420+
+                            <div class="task-description">
+                                将单体应用拆分为微服务架构，设计服务边界，实现服务间通信，配置服务发现和注册中心。
                             </div>
-                            <div class="task-deadline">截止：10天后</div>
-                            <button class="apply-btn">申请任务</button>
+                            <div class="task-footer">
+                                <div class="task-reward">
+                                    🚀 基础奖励：9 | 预计经验：420+
+                                </div>
+                                <div class="task-deadline">截止：10天后</div>
+                                <button class="apply-btn">申请任务</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 任务卡片4 -->
-                    <div class="task-card" data-type="side" data-difficulty="normal" data-reward="4">
-                        <div class="task-card-header">
-                            <div>
-                                <div class="task-title">API安全性优化</div>
-                                <div class="task-meta">
-                                    <span class="task-tag tag-type-side">支线任务</span>
-                                    <span class="task-tag tag-difficulty-normal">标准难度</span>
-                                    <span class="task-tag tag-reward-medium">基础奖励：4</span>
+                        <!-- 任务卡片4 -->
+                        <div class="task-card" data-type="side" data-difficulty="normal" data-reward="4">
+                            <div class="task-card-header">
+                                <div>
+                                    <div class="task-title">API安全性优化</div>
+                                    <div class="task-meta">
+                                        <span class="task-tag tag-type-side">支线任务</span>
+                                        <span class="task-tag tag-difficulty-normal">标准难度</span>
+                                        <span class="task-tag tag-reward-medium">基础奖励：4</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="task-description">
-                            完善API安全防护机制，添加请求限流、参数验证和SQL注入防护。提升系统安全性。
-                        </div>
-                        <div class="task-footer">
-                            <div class="task-reward">
-                                🔒 基础奖励：4 | 预计经验：140+
+                            <div class="task-description">
+                                完善API安全防护机制，添加请求限流、参数验证和SQL注入防护。提升系统安全性。
                             </div>
-                            <div class="task-deadline">截止：5天后</div>
-                            <button class="apply-btn">申请任务</button>
+                            <div class="task-footer">
+                                <div class="task-reward">
+                                    🔒 基础奖励：4 | 预计经验：140+
+                                </div>
+                                <div class="task-deadline">截止：5天后</div>
+                                <button class="apply-btn">申请任务</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 任务卡片5 -->
-                    <div class="task-card" data-type="main" data-difficulty="simple" data-reward="3">
-                        <div class="task-card-header">
-                            <div>
-                                <div class="task-title">数据备份系统</div>
-                                <div class="task-meta">
-                                    <span class="task-tag tag-type-main">主线任务</span>
-                                    <span class="task-tag tag-difficulty-simple">简单</span>
-                                    <span class="task-tag tag-reward-low">基础奖励：3</span>
+                        <!-- 任务卡片5 -->
+                        <div class="task-card" data-type="main" data-difficulty="simple" data-reward="3">
+                            <div class="task-card-header">
+                                <div>
+                                    <div class="task-title">数据备份系统</div>
+                                    <div class="task-meta">
+                                        <span class="task-tag tag-type-main">主线任务</span>
+                                        <span class="task-tag tag-difficulty-simple">简单</span>
+                                        <span class="task-tag tag-reward-low">基础奖励：3</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="task-description">
-                            搭建自动数据备份系统，配置定时备份任务，实现增量备份和数据恢复功能。
-                        </div>
-                        <div class="task-footer">
-                            <div class="task-reward">
-                                💾 基础奖励：3 | 预计经验：90+
+                            <div class="task-description">
+                                搭建自动数据备份系统，配置定时备份任务，实现增量备份和数据恢复功能。
                             </div>
-                            <div class="task-deadline">截止：4天后</div>
-                            <button class="apply-btn">申请任务</button>
+                            <div class="task-footer">
+                                <div class="task-reward">
+                                    💾 基础奖励：3 | 预计经验：90+
+                                </div>
+                                <div class="task-deadline">截止：4天后</div>
+                                <button class="apply-btn">申请任务</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- 任务卡片6 -->
-                    <div class="task-card" data-type="side" data-difficulty="hard" data-reward="8">
-                        <div class="task-card-header">
-                            <div>
-                                <div class="task-title">AI代码审查工具</div>
-                                <div class="task-meta">
-                                    <span class="task-tag tag-type-side">支线任务</span>
-                                    <span class="task-tag tag-difficulty-hard">高难度</span>
-                                    <span class="task-tag tag-reward-high">基础奖励：8</span>
+                        <!-- 任务卡片6 -->
+                        <div class="task-card" data-type="side" data-difficulty="hard" data-reward="8">
+                            <div class="task-card-header">
+                                <div>
+                                    <div class="task-title">AI代码审查工具</div>
+                                    <div class="task-meta">
+                                        <span class="task-tag tag-type-side">支线任务</span>
+                                        <span class="task-tag tag-difficulty-hard">高难度</span>
+                                        <span class="task-tag tag-reward-high">基础奖励：8</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="task-description">
-                            开发基于AI的代码审查工具，集成静态分析、代码质量检测和最佳实践建议功能。
-                        </div>
-                        <div class="task-footer">
-                            <div class="task-reward">
-                                🤖 基础奖励：8 | 预计经验：350+
+                            <div class="task-description">
+                                开发基于AI的代码审查工具，集成静态分析、代码质量检测和最佳实践建议功能。
                             </div>
-                            <div class="task-deadline">截止：8天后</div>
-                            <button class="apply-btn">申请任务</button>
+                            <div class="task-footer">
+                                <div class="task-reward">
+                                    🤖 基础奖励：8 | 预计经验：350+
+                                </div>
+                                <div class="task-deadline">截止：8天后</div>
+                                <button class="apply-btn">申请任务</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- 右侧个人信息面板 -->
-            <div class="right-panel">
-                <div class="panel-title">平台等级</div>
-                <div class="level-display">
-                    <div class="level-info">
-                        <span class="level-number">Lv.15</span>
-                        <span class="level-label">努力等级</span>
-                    </div>
-                    <div class="level-note">
-                        💡 等级反映参与度和努力程度
-                    </div>
-                </div>
-
-                <div class="panel-title">GitHub技能</div>
-                <div class="github-skills-link">
-                    <div class="github-status">
-                        <div class="github-icon">🐙</div>
-                        <div class="github-info">
-                            <div class="github-title">技能通过GitHub评估</div>
-                            <div class="github-desc">代码质量分：8.7/10</div>
+                <!-- 右侧个人信息面板 -->
+                <div class="right-panel">
+                    <div class="panel-title">平台等级</div>
+                    <div class="level-display">
+                        <div class="level-info">
+                            <span class="level-number">Lv.15</span>
+                            <span class="level-label">AW等级</span>
+                        </div>
+                        <div class="level-note">
+                            💡 AW等级反映参与度和努力程度
                         </div>
                     </div>
-                    <a href="github-skills.html" class="view-skills-btn">查看详细技能</a>
-                </div>
 
-                <div class="panel-title">近期成就</div>
-                <div class="achievement-section">
-                    <div class="achievement-item">🏆 连续完美完成5个任务</div>
-                    <div class="achievement-item">🎯 主线任务专家</div>
-                    <div class="achievement-item">📚 活跃贡献者</div>
-                </div>
+                    <div class="panel-title">GitHub技能</div>
+                    <div class="github-skills-link">
+                        <div class="github-status">
+                            <div class="github-icon">🐙</div>
+                            <div class="github-info">
+                                <div class="github-title">技能通过GitHub评估</div>
+                                <div class="github-desc">代码质量分：8.7/10</div>
+                            </div>
+                        </div>
+                        <a href="github-skills.html" class="view-skills-btn">查看详细技能</a>
+                    </div>
 
-                <div class="panel-title">令牌信息</div>
-                <div class="token-info">
-                    <div class="token-type">🎯 普通令牌</div>
-                    <div class="token-stats">
-                        <div>
-                            <div class="stat-value">3</div>
-                            <div>队列容量</div>
-                        </div>
-                        <div>
-                            <div class="stat-value">1,250</div>
-                            <div>贡献值</div>
-                        </div>
-                        <div>
-                            <div class="stat-value">85%</div>
-                            <div>完成率</div>
+                    <div class="panel-title">近期成就</div>
+                    <div class="achievement-section">
+                        <div class="achievement-item">🏆 连续完美完成5个任务</div>
+                        <div class="achievement-item">🎯 主线任务专家</div>
+                        <div class="achievement-item">📚 活跃贡献者</div>
+                    </div>
+
+                    <div class="panel-title">令牌信息</div>
+                    <div class="token-info">
+                        <div class="token-type">🎯 普通令牌</div>
+                        <div class="token-stats">
+                            <div>
+                                <div class="stat-value">3</div>
+                                <div>队列容量</div>
+                            </div>
+                            <div>
+                                <div class="stat-value">1,250</div>
+                                <div>贡献值</div>
+                            </div>
+                            <div>
+                                <div class="stat-value">85%</div>
+                                <div>完成率</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 
@@ -1238,20 +1238,68 @@
             calculateOvertime();
         });
 
-        // 任务申请功能
+        // 令牌系统模拟
+        const tokenCounts = {
+            normal: 3,
+            preview: 1,
+            review: 2,
+            queue: 0,
+            streak: 1
+        };
+
+        // 任务申请功能 - 完整令牌使用流程
         document.querySelectorAll('.apply-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                const taskTitle = this.closest('.task-card').querySelector('.task-title').textContent;
+                const taskCard = this.closest('.task-card');
+                const taskTitle = taskCard.querySelector('.task-title').textContent;
+                const taskType = taskCard.dataset.type || 'normal';
+                const taskDifficulty = taskCard.dataset.difficulty || 'normal';
+                
+                // 第一步：选择任务 - 检查技能和时间
+                const userLevel = 15; // 模拟用户等级
+                const taskSkillMatch = checkSkillMatch(taskType, taskDifficulty);
+                
+                if (!taskSkillMatch.suitable) {
+                    if (confirm(`${taskSkillMatch.warning}\n\n是否仍要申请此任务？`)) {
+                        // 继续申请流程
+                    } else {
+                        return;
+                    }
+                }
+                
+                // 第二步：确定需要的令牌类型
+                const requiredToken = determineRequiredToken(taskType, taskDifficulty);
+                
+                // 检查令牌数量
+                if (tokenCounts[requiredToken.type] <= 0) {
+                    alert(`申请失败：缺少${requiredToken.name}！\n\n建议：\n${requiredToken.suggestion}`);
+                    return;
+                }
                 
                 // 检查队列是否已满
                 const currentQueueSize = document.querySelectorAll('.queue-item').length;
-                if (currentQueueSize >= 4) { // 1个当前任务 + 3个排队任务
+                if (currentQueueSize >= 4) {
                     alert('任务队列已满，请先完成当前任务再申请新任务');
                     return;
                 }
                 
-                // 模拟申请成功
-                this.textContent = '申请成功';
+                // 第三步：使用令牌锁定任务
+                const confirmMessage = `准备使用${requiredToken.name}申请任务：\n\n` +
+                    `任务：${taskTitle}\n` +
+                    `难度：${taskDifficulty}\n` +
+                    `消耗：1个${requiredToken.name}\n` +
+                    `剩余：${tokenCounts[requiredToken.type] - 1}个\n\n` +
+                    `确认申请？`;
+                
+                if (!confirm(confirmMessage)) {
+                    return;
+                }
+                
+                // 消耗令牌
+                tokenCounts[requiredToken.type]--;
+                
+                // 第四步：锁定任务成功
+                this.textContent = '锁定成功';
                 this.disabled = true;
                 this.style.background = '#4caf50';
                 
@@ -1260,16 +1308,91 @@
                 const newQueueItem = document.createElement('div');
                 newQueueItem.className = 'queue-item';
                 newQueueItem.innerHTML = `
-                    <div class="queue-title">${taskTitle}</div>
-                    <div class="queue-status">排队中 · 第${currentQueueSize}位</div>
+                    <div class="queue-title">🎫 ${taskTitle}</div>
+                    <div class="queue-status">已锁定 · 使用${requiredToken.name}</div>
                 `;
                 queue.appendChild(newQueueItem);
                 
+                // 显示任务执行阶段提示
                 setTimeout(() => {
-                    this.textContent = '已申请';
-                }, 2000);
+                    alert(`任务锁定成功！接下来：\n\n` +
+                        `📋 执行任务：在规定时间内完成任务开发\n` +
+                        `⏰ 截止时间：${getTaskDeadline(taskCard)}\n` +
+                        `🏆 完成后获得：经验 + 令牌 + 声誉奖励\n\n` +
+                        `建议：定期查看任务进度，按时完成可获得连胜奖励！`);
+                    this.textContent = '进行中';
+                    this.style.background = '#ff9800';
+                }, 1000);
             });
         });
+
+        // 检查技能匹配度
+        function checkSkillMatch(taskType, difficulty) {
+            const userSkills = {
+                frontend: 8,
+                backend: 6,
+                fullstack: 7,
+                mobile: 5
+            };
+            
+            const requiredSkill = userSkills[taskType] || 5;
+            const difficultyMultiplier = {
+                'simple': 0.7,
+                'normal': 1.0,
+                'hard': 1.3
+            };
+            
+            const requiredLevel = 5 * (difficultyMultiplier[difficulty] || 1.0);
+            
+            if (requiredSkill < requiredLevel) {
+                return {
+                    suitable: false,
+                    warning: `技能等级可能不足！\n任务要求：${requiredLevel.toFixed(1)}\n当前技能：${requiredSkill}\n\n完成难度较高，建议选择更合适的任务。`
+                };
+            }
+            
+            return { suitable: true };
+        }
+
+        // 确定所需令牌类型
+        function determineRequiredToken(taskType, difficulty) {
+            if (taskType === 'review') {
+                return {
+                    type: 'review',
+                    name: '审查令牌',
+                    suggestion: '通过连续完成任务获得审查令牌，或选择其他类型任务'
+                };
+            }
+            
+            if (difficulty === 'hard') {
+                return {
+                    type: 'normal',
+                    name: '普通令牌',
+                    suggestion: '完成任务、代码审查或提Issue可获得普通令牌'
+                };
+            }
+            
+            // 新手友好任务优先使用预约令牌
+            if (difficulty === 'simple' && tokenCounts.preview > 0) {
+                return {
+                    type: 'preview',
+                    name: '预约令牌',
+                    suggestion: '新手保护机制自动发放预约令牌'
+                };
+            }
+            
+            return {
+                type: 'normal',
+                name: '普通令牌',
+                suggestion: '完成任务、代码审查或提Issue可获得普通令牌'
+            };
+        }
+
+        // 获取任务截止时间
+        function getTaskDeadline(taskCard) {
+            const deadlineText = taskCard.querySelector('.task-deadline').textContent;
+            return deadlineText.replace('截止：', '');
+        }
 
         // 添加任务卡片悬停效果
         document.querySelectorAll('.task-card').forEach(card => {

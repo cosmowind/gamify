@@ -5,7 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>等级经验计算器 - According.Work 游戏化平台</title>
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* 头部区域样式 */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #666;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .level-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
         .calculator-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -352,206 +441,221 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <a href="index.html">According.Work 游戏化平台</a>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="level-calculator.html" class="active">等级计算器</a></li>
-                    <li><a href="task-center.html">任务中心</a></li>
-                    <li><a href="character-panel.html">人物面板</a></li>
-                    <li><a href="token-system.html">令牌系统</a></li>
-                    <li><a href="github-skills.html">GitHub技能</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <main class="calculator-container">
-        <!-- 系统概览 -->
-        <div class="system-overview">
-            <div class="overview-title">🎮 等级经验系统</div>
-            <div class="overview-desc">
-                衡量用户在平台上的参与程度，抽离能力的衡量，主要体现努力程度。与声誉不同，这个指标只升不降。
-            </div>
-            <div class="key-points">
-                <div class="key-point">
-                    <div class="key-point-icon">📈</div>
-                    <div class="key-point-title">努力程度量化</div>
-                    <div class="key-point-desc">通过任务完成、代码审查等行动积累经验</div>
-                </div>
-                <div class="key-point">
-                    <div class="key-point-icon">🎯</div>
-                    <div class="key-point-title">权益倍率提升</div>
-                    <div class="key-point-desc">等级越高，任务奖励倍率越高</div>
-                </div>
-                <div class="key-point">
-                    <div class="key-point-icon">🔓</div>
-                    <div class="key-point-title">机制逐步解锁</div>
-                    <div class="key-point-desc">不同等级解锁令牌系统、声誉系统等</div>
+    <div class="container">
+            <!-- 头部区域 -->
+            <div class="header">
+                <div class="header-top">
+                    <div class="header-nav">
+                        <div class="logo">According.Work</div>
+                        <ul class="nav-menu">
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="level-calculator.html" class="active">等级计算器</a></li>
+                            <li><a href="task-center.html">任务中心</a></li>
+                            <li><a href="character-panel.html">人物面板</a></li>
+                            <li><a href="token-system.html">令牌系统</a></li>
+                            <li><a href="github-skills.html">GitHub技能</a></li>
+                        </ul>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">张三</div>
+                        <div class="user-stats">
+                            <div class="stat-item">
+                                <span>AW等级</span>
+                                <span class="level-badge">Lv.15</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>经验值</span>
+                                <span class="stat-value">8,450</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="effort-emphasis">
-            <div class="emphasis-title">⚠️ 重要说明：等级 ≠ 技能能力</div>
-            <div class="emphasis-text">
-                等级系统仅反映参与度和努力程度，不代表技术能力。各技术栈的实际能力通过GitHub仓库数据来评估，
-                包括代码质量、项目复杂度、贡献频率等客观指标。这样设计可以避免技能垄断，让新手也能通过努力获得平台权益。
-            </div>
-        </div>
-
-        <div class="parameter-panel">
-            <h3>📊 参数设置</h3>
             
-            <div class="preset-buttons">
-                <button class="preset-btn" onclick="loadPreset('pokemon')">宝可梦曲线</button>
-                <button class="preset-btn" onclick="loadPreset('linear')">线性增长</button>
-                <button class="preset-btn" onclick="loadPreset('exponential')">指数增长</button>
-                <button class="preset-btn" onclick="loadPreset('balanced')">平衡模式</button>
-            </div>
-
-            <div class="parameter-group">
-                <div class="parameter-item">
-                    <label for="maxLevel">最大等级</label>
-                    <input type="range" id="maxLevel" min="10" max="100" value="20" oninput="updateParameters()">
-                    <div class="value-display" id="maxLevelValue">20</div>
+            <div class="calculator-container">
+                <!-- 系统概览 -->
+                <div class="system-overview">
+                                    <div class="overview-title">🎮 AW等级经验系统</div>
+                <div class="overview-desc">
+                    衡量用户在平台上的参与程度，抽离能力的衡量，主要体现努力程度。与声誉不同，这个指标只升不降。
                 </div>
-                
-                <div class="parameter-item">
-                    <label for="maxMultiplier">最高权益倍率</label>
-                    <input type="range" id="maxMultiplier" min="1" max="5" step="0.1" value="2" oninput="updateParameters()">
-                    <div class="value-display" id="maxMultiplierValue">2.0x</div>
-                </div>
-                
-                <div class="parameter-item">
-                    <label for="baseExp">基础经验值</label>
-                    <input type="range" id="baseExp" min="10" max="1000" value="100" oninput="updateParameters()">
-                    <div class="value-display" id="baseExpValue">100</div>
-                </div>
-                
-                <div class="parameter-item">
-                    <label for="growthRate">增长率</label>
-                    <input type="range" id="growthRate" min="1.0" max="2.0" step="0.01" value="1.5" oninput="updateParameters()">
-                    <div class="value-display" id="growthRateValue">1.50</div>
-                </div>
-            </div>
-
-            <div class="formula-display" id="formulaDisplay">
-                当前公式：EXP(n) = 100 × (1.5^n)
-            </div>
-
-            <div class="btn-group">
-                <button class="btn btn-primary" onclick="calculateLevels()">重新计算</button>
-                <button class="btn btn-secondary" onclick="exportData()">导出数据</button>
-                <button class="btn btn-secondary" onclick="resetToDefault()">重置默认</button>
-            </div>
-        </div>
-
-                <div class="results-container">
-            <div class="level-table">
-                <h3>📈 等级经验表</h3>
-                <table id="levelTable">
-                    <thead>
-                        <tr>
-                            <th>等级</th>
-                            <th>累计经验</th>
-                            <th>升级所需</th>
-                            <th>奖励倍率</th>
-                            <th>解锁机制</th>
-                        </tr>
-                    </thead>
-                    <tbody id="levelTableBody">
-                        <!-- 动态生成 -->
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="exp-actions">
-                <!-- 经验增长曲线可视化 -->
-                <div class="chart-container">
-                    <h3>📊 经验增长曲线</h3>
-                    <div class="chart-controls">
-                        <label for="chartType">图表类型：</label>
-                        <select id="chartType" onchange="updateChart()">
-                            <option value="total">累计经验</option>
-                            <option value="required">升级所需经验</option>
-                            <option value="multiplier">奖励倍率</option>
-                        </select>
-                        <button class="btn btn-secondary" onclick="toggleLogScale()">对数/线性</button>
-                    </div>
-                    <div class="chart-wrapper">
-                        <canvas id="expChart" width="600" height="300"></canvas>
-                    </div>
-                    <div class="chart-info">
-                        <div class="info-item">
-                            <span class="info-label">曲线类型</span>
-                            <span class="info-value" id="curveType">指数增长</span>
+                    <div class="key-points">
+                        <div class="key-point">
+                            <div class="key-point-icon">📈</div>
+                            <div class="key-point-title">努力程度量化</div>
+                            <div class="key-point-desc">通过任务完成、代码审查等行动积累经验</div>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">增长率</span>
-                            <span class="info-value" id="growthInfo">1.50x</span>
+                        <div class="key-point">
+                            <div class="key-point-icon">🎯</div>
+                            <div class="key-point-title">权益倍率提升</div>
+                            <div class="key-point-desc">等级越高，任务奖励倍率越高</div>
                         </div>
-                        <div class="info-item">
-                            <span class="info-label">最大值</span>
-                            <span class="info-value" id="maxValue">-</span>
+                        <div class="key-point">
+                            <div class="key-point-icon">🔓</div>
+                            <div class="key-point-title">机制逐步解锁</div>
+                            <div class="key-point-desc">不同等级解锁令牌系统、声誉系统等</div>
                         </div>
-                    </div>
-                </div>
-
-                <h3>💪 经验获取方式</h3>
-                <div class="exp-source">
-                    <div class="exp-item">
-                        <span class="exp-action">完成任务</span>
-                        <span class="exp-value">+1 EXP</span>
-                    </div>
-                    <div class="exp-item">
-                        <span class="exp-action">代码审查</span>
-                        <span class="exp-value">+1 EXP</span>
-                    </div>
-                    <div class="exp-item">
-                        <span class="exp-action">提出Issue</span>
-                        <span class="exp-value">+1 EXP</span>
-                    </div>
-                    <div class="exp-item">
-                        <span class="exp-action">编写文档</span>
-                        <span class="exp-value">+1 EXP</span>
-                    </div>
-                </div>
-
-                <h4>🎁 等级权益</h4>
-                <div class="level-benefits">
-                    <div class="benefit-item">
-                        <div class="benefit-icon">🎫</div>
-                        <span>等级越高，令牌获取数量越多</span>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">💰</div>
-                        <span>任务奖励倍率随等级线性增长</span>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">🔓</div>
-                        <span>逐步解锁高级功能和权限</span>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="benefit-icon">🏆</div>
-                        <span>主线任务优先分配权</span>
                     </div>
                 </div>
 
                 <div class="effort-emphasis">
-                    <div class="emphasis-title">💡 设计理念</div>
-                    <div class="emphasis-text">
-                        通过努力程度而非技能水平来分配平台权益，确保新手和经验丰富的开发者都能公平竞争，
-                        促进知识分享和团队协作。技能评估另有专门的GitHub集成系统。
+                                <div class="emphasis-title">⚠️ 重要说明：AW等级 ≠ 技能能力</div>
+            <div class="emphasis-text">
+                AW等级系统仅反映参与度和努力程度，不代表技术能力。各技术栈的实际能力通过GitHub仓库数据来评估，
+                包括代码质量、项目复杂度、贡献频率等客观指标。这样设计可以避免技能垄断，让新手也能通过努力获得平台权益。
+            </div>
+                </div>
+
+                <div class="parameter-panel">
+                    <h3>📊 参数设置</h3>
+                    
+                    <div class="preset-buttons">
+                        <button class="preset-btn" onclick="loadPreset('pokemon')">宝可梦曲线</button>
+                        <button class="preset-btn" onclick="loadPreset('linear')">线性增长</button>
+                        <button class="preset-btn" onclick="loadPreset('exponential')">指数增长</button>
+                        <button class="preset-btn" onclick="loadPreset('balanced')">平衡模式</button>
+                    </div>
+
+                    <div class="parameter-group">
+                        <div class="parameter-item">
+                            <label for="maxLevel">最大等级</label>
+                            <input type="range" id="maxLevel" min="10" max="100" value="20" oninput="updateParameters()">
+                            <div class="value-display" id="maxLevelValue">20</div>
+                        </div>
+                        
+                        <div class="parameter-item">
+                            <label for="maxMultiplier">最高权益倍率</label>
+                            <input type="range" id="maxMultiplier" min="1" max="5" step="0.1" value="2" oninput="updateParameters()">
+                            <div class="value-display" id="maxMultiplierValue">2.0x</div>
+                        </div>
+                        
+                        <div class="parameter-item">
+                            <label for="baseExp">基础经验值</label>
+                            <input type="range" id="baseExp" min="10" max="1000" value="100" oninput="updateParameters()">
+                            <div class="value-display" id="baseExpValue">100</div>
+                        </div>
+                        
+                        <div class="parameter-item">
+                            <label for="growthRate">增长率</label>
+                            <input type="range" id="growthRate" min="1.0" max="2.0" step="0.01" value="1.5" oninput="updateParameters()">
+                            <div class="value-display" id="growthRateValue">1.50</div>
+                        </div>
+                    </div>
+
+                    <div class="formula-display" id="formulaDisplay">
+                        当前公式：EXP(n) = 100 × (1.5^n)
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="calculateLevels()">重新计算</button>
+                        <button class="btn btn-secondary" onclick="exportData()">导出数据</button>
+                        <button class="btn btn-secondary" onclick="resetToDefault()">重置默认</button>
+                    </div>
+                </div>
+
+                <div class="results-container">
+                    <div class="level-table">
+                        <h3>📈 等级经验表</h3>
+                        <table id="levelTable">
+                            <thead>
+                                <tr>
+                                    <th>等级</th>
+                                    <th>累计经验</th>
+                                    <th>升级所需</th>
+                                    <th>奖励倍率</th>
+                                    <th>解锁机制</th>
+                                </tr>
+                            </thead>
+                            <tbody id="levelTableBody">
+                                <!-- 动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="exp-actions">
+                        <!-- 经验增长曲线可视化 -->
+                        <div class="chart-container">
+                            <h3>📊 经验增长曲线</h3>
+                            <div class="chart-controls">
+                                <label for="chartType">图表类型：</label>
+                                <select id="chartType" onchange="updateChart()">
+                                    <option value="total">累计经验</option>
+                                    <option value="required">升级所需经验</option>
+                                    <option value="multiplier">奖励倍率</option>
+                                </select>
+                                <button class="btn btn-secondary" onclick="toggleLogScale()">对数/线性</button>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="expChart" width="600" height="300"></canvas>
+                            </div>
+                            <div class="chart-info">
+                                <div class="info-item">
+                                    <span class="info-label">曲线类型</span>
+                                    <span class="info-value" id="curveType">指数增长</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">增长率</span>
+                                    <span class="info-value" id="growthInfo">1.50x</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">最大值</span>
+                                    <span class="info-value" id="maxValue">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>💪 经验获取方式</h3>
+                        <div class="exp-source">
+                            <div class="exp-item">
+                                <span class="exp-action">完成任务</span>
+                                <span class="exp-value">+1 EXP</span>
+                            </div>
+                            <div class="exp-item">
+                                <span class="exp-action">代码审查</span>
+                                <span class="exp-value">+1 EXP</span>
+                            </div>
+                            <div class="exp-item">
+                                <span class="exp-action">提出Issue</span>
+                                <span class="exp-value">+1 EXP</span>
+                            </div>
+                            <div class="exp-item">
+                                <span class="exp-action">编写文档</span>
+                                <span class="exp-value">+1 EXP</span>
+                            </div>
+                        </div>
+
+                        <h4>🎁 等级权益</h4>
+                        <div class="level-benefits">
+                            <div class="benefit-item">
+                                <div class="benefit-icon">🎫</div>
+                                <span>等级越高，令牌获取数量越多</span>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">💰</div>
+                                <span>任务奖励倍率随等级线性增长</span>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">🔓</div>
+                                <span>逐步解锁高级功能和权限</span>
+                            </div>
+                            <div class="benefit-item">
+                                <div class="benefit-icon">🏆</div>
+                                <span>主线任务优先分配权</span>
+                            </div>
+                        </div>
+
+                        <div class="effort-emphasis">
+                            <div class="emphasis-title">💡 设计理念</div>
+                            <div class="emphasis-text">
+                                通过努力程度而非技能水平来分配平台权益，确保新手和经验丰富的开发者都能公平竞争，
+                                促进知识分享和团队协作。技能评估另有专门的GitHub集成系统。
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <script>
         // 预设配置

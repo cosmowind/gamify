@@ -5,7 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>令牌系统 - According.Work 游戏化平台</title>
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* 头部区域样式 */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #666;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .level-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        /* 令牌使用流程 */
+        .token-flow {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .flow-steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .step-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
         .token-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -321,289 +458,253 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <a href="index.html">According.Work 游戏化平台</a>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="level-calculator.html">等级计算器</a></li>
-                    <li><a href="task-center.html">任务中心</a></li>
-                    <li><a href="character-panel.html">人物面板</a></li>
-                    <li><a href="token-system.html" class="active">令牌系统</a></li>
-                    <li><a href="github-skills.html">GitHub技能</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <main class="token-container">
-        <h1>🎯 令牌系统管理</h1>
-        <p>管理和使用不同类型的令牌，实现新手保护和任务分配机制</p>
-
-        <!-- 令牌概览 -->
-        <div class="token-overview">
-            <div class="token-card token-normal">
-                <div class="token-header">
-                    <div class="token-icon">🎫</div>
-                    <div class="token-info">
-                        <h3>普通令牌</h3>
-                        <div class="token-count" id="normalTokens">3</div>
+    <div class="container">
+            <!-- 头部区域 -->
+            <div class="header">
+                <div class="header-top">
+                    <div class="header-nav">
+                        <div class="logo">According.Work</div>
+                        <ul class="nav-menu">
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="level-calculator.html">等级计算器</a></li>
+                            <li><a href="task-center.html">任务中心</a></li>
+                            <li><a href="character-panel.html">人物面板</a></li>
+                            <li><a href="token-system.html" class="active">令牌系统</a></li>
+                            <li><a href="github-skills.html">GitHub技能</a></li>
+                        </ul>
                     </div>
-                </div>
-                <div class="token-description">
-                    占90%的令牌个数，可以锁定一个普通任务。适用于大部分开发任务和日常工作。
-                </div>
-                <div class="token-actions">
-                    <button class="btn btn-primary" onclick="useToken('normal')">使用令牌</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('normal')">查看详情</button>
-                </div>
-            </div>
-
-            <div class="token-card token-preview">
-                <div class="token-header">
-                    <div class="token-icon">📋</div>
-                    <div class="token-info">
-                        <h3>预约令牌</h3>
-                        <div class="token-count" id="previewTokens">1</div>
+                    <div class="user-info">
+                        <div class="user-avatar">张三</div>
+                        <div class="user-stats">
+                            <div class="stat-item">
+                                <span>AW等级</span>
+                                <span class="level-badge">Lv.15</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>经验值</span>
+                                <span class="stat-value">8,450</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="token-description">
-                    新手保护机制，在手上满任务时可以提前锁定新任务，该任务被锁定后不可被其他人领取。
-                </div>
-                <div class="token-actions">
-                    <button class="btn btn-primary" onclick="useToken('preview')">预约任务</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('preview')">查看详情</button>
-                </div>
-            </div>
-
-            <div class="token-card token-review">
-                <div class="token-header">
-                    <div class="token-icon">🔍</div>
-                    <div class="token-info">
-                        <h3>审查令牌</h3>
-                        <div class="token-count" id="reviewTokens">2</div>
-                    </div>
-                </div>
-                <div class="token-description">
-                    专门用于执行代码审查任务，提升代码质量和团队协作效率。
-                </div>
-                <div class="token-actions">
-                    <button class="btn btn-primary" onclick="useToken('review')">审查代码</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('review')">查看详情</button>
-                </div>
-            </div>
-
-            <div class="token-card token-queue">
-                <div class="token-header">
-                    <div class="token-icon">⏱️</div>
-                    <div class="token-info">
-                        <h3>排队令牌</h3>
-                        <div class="token-count" id="queueTokens">0</div>
-                    </div>
-                </div>
-                <div class="token-description">
-                    在手上满任务时可以标记新任务，任务可被多次标记，优先被第一位接取的人领走。
-                </div>
-                <div class="token-actions">
-                    <button class="btn btn-primary" onclick="useToken('queue')">排队任务</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('queue')">查看详情</button>
-                </div>
-            </div>
-
-            <div class="token-card token-streak">
-                <div class="token-header">
-                    <div class="token-icon">⚡</div>
-                    <div class="token-info">
-                        <h3>连胜令牌</h3>
-                        <div class="token-count" id="streakTokens">1</div>
-                    </div>
-                </div>
-                <div class="token-description">
-                    用于接取不重要的支线任务，允许延时，会被惩罚，但不会打断连胜记录。
-                </div>
-                <div class="token-actions">
-                    <button class="btn btn-primary" onclick="useToken('streak')">使用连胜</button>
-                    <button class="btn btn-secondary" onclick="viewDetails('streak')">查看详情</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 使用记录 -->
-        <div class="token-usage">
-            <h3>📊 令牌使用记录</h3>
-            
-            <div class="usage-tabs">
-                <button class="tab-button active" onclick="switchTab('recent')">最近使用</button>
-                <button class="tab-button" onclick="switchTab('statistics')">使用统计</button>
-                <button class="tab-button" onclick="switchTab('earning')">获取记录</button>
-            </div>
-
-            <div id="recent" class="tab-content active">
-                <div class="usage-record">
-                    <div class="record-icon" style="background: #4CAF50;">🎫</div>
-                    <div class="record-info">
-                        <div class="record-title">使用普通令牌 - API优化任务</div>
-                        <div class="record-meta">任务难度：中等 · 预计2天完成</div>
-                    </div>
-                    <div class="record-time">2小时前</div>
-                </div>
-                
-                <div class="usage-record">
-                    <div class="record-icon" style="background: #2196F3;">🔍</div>
-                    <div class="record-info">
-                        <div class="record-title">使用审查令牌 - 用户注册流程审查</div>
-                        <div class="record-meta">代码质量评分：9.2 · 提出3条建议</div>
-                    </div>
-                    <div class="record-time">1天前</div>
-                </div>
-                
-                <div class="usage-record">
-                    <div class="record-icon" style="background: #FF9800;">📋</div>
-                    <div class="record-info">
-                        <div class="record-title">使用预约令牌 - 数据库迁移任务</div>
-                        <div class="record-meta">预约成功 · 将于明天开始执行</div>
-                    </div>
-                    <div class="record-time">2天前</div>
-                </div>
-            </div>
-
-            <div id="statistics" class="tab-content">
-                <div class="simulation-result">
-                    <div class="result-item">
-                        <span>普通令牌使用次数</span>
-                        <strong>47次</strong>
-                    </div>
-                    <div class="result-item">
-                        <span>审查令牌使用次数</span>
-                        <strong>23次</strong>
-                    </div>
-                    <div class="result-item">
-                        <span>预约令牌使用次数</span>
-                        <strong>12次</strong>
-                    </div>
-                    <div class="result-item">
-                        <span>平均任务完成时间</span>
-                        <strong>2.3天</strong>
-                    </div>
-                    <div class="result-item">
-                        <span>令牌使用效率</span>
-                        <strong>94.5%</strong>
-                    </div>
-                </div>
-            </div>
-
-            <div id="earning" class="tab-content">
-                <div class="usage-record">
-                    <div class="record-icon" style="background: #4CAF50;">+</div>
-                    <div class="record-info">
-                        <div class="record-title">等级提升奖励</div>
-                        <div class="record-meta">达到15级 · 获得2个普通令牌</div>
-                    </div>
-                    <div class="record-time">3天前</div>
-                </div>
-                
-                <div class="usage-record">
-                    <div class="record-icon" style="background: #2196F3;">+</div>
-                    <div class="record-info">
-                        <div class="record-title">连续完成任务奖励</div>
-                        <div class="record-meta">连续30天 · 获得1个审查令牌</div>
-                    </div>
-                    <div class="record-time">1周前</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 令牌模拟器 -->
-        <div class="token-simulator">
-            <h3>🎮 令牌使用模拟器</h3>
-            <p>模拟不同场景下的令牌使用策略</p>
-            
-            <div class="simulator-controls">
-                <div class="control-group">
-                    <label for="userLevel">用户等级</label>
-                    <select id="userLevel" onchange="updateSimulation()">
-                        <option value="1">新手 (Lv.1-5)</option>
-                        <option value="10">进阶 (Lv.6-15)</option>
-                        <option value="20" selected>专家 (Lv.16-25)</option>
-                        <option value="30">大师 (Lv.26+)</option>
-                    </select>
-                </div>
-                
-                <div class="control-group">
-                    <label for="taskType">任务类型</label>
-                    <select id="taskType" onchange="updateSimulation()">
-                        <option value="normal">普通任务</option>
-                        <option value="urgent">紧急任务</option>
-                        <option value="review">代码审查</option>
-                        <option value="mainline">主线任务</option>
-                    </select>
-                </div>
-                
-                <div class="control-group">
-                    <label for="currentTasks">当前任务数</label>
-                    <input type="number" id="currentTasks" min="0" max="5" value="2" onchange="updateSimulation()">
-                </div>
-                
-                <div class="control-group">
-                    <label for="timeLeft">剩余时间(天)</label>
-                    <input type="number" id="timeLeft" min="1" max="14" value="3" onchange="updateSimulation()">
                 </div>
             </div>
             
-            <div class="simulation-result" id="simulationResult">
-                <div class="result-item">
-                    <span>推荐令牌类型</span>
-                    <strong>普通令牌</strong>
+            <div class="token-container">
+                <!-- 令牌使用流程 -->
+                <div class="token-flow">
+                    <h2>🎯 令牌使用流程</h2>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="step-icon">🎯</div>
+                            <div class="step-content">
+                                <div class="step-title">选择任务</div>
+                                <div class="step-desc">根据技能和时间选择合适的任务</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">🎫</div>
+                            <div class="step-content">
+                                <div class="step-title">使用令牌</div>
+                                <div class="step-desc">消耗对应类型的令牌锁定任务</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">⚙️</div>
+                            <div class="step-content">
+                                <div class="step-title">执行任务</div>
+                                <div class="step-desc">在规定时间内完成任务开发</div>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">🏆</div>
+                            <div class="step-content">
+                                <div class="step-title">获得奖励</div>
+                                <div class="step-desc">获得经验、令牌和声誉奖励</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="result-item">
-                    <span>成功率预估</span>
-                    <strong>85%</strong>
-                </div>
-                <div class="result-item">
-                    <span>预期奖励倍率</span>
-                    <strong>1.2x</strong>
-                </div>
-                <div class="result-item">
-                    <span>风险评估</span>
-                    <strong>低风险</strong>
-                </div>
-            </div>
-        </div>
 
-        <!-- 令牌流程图 -->
-        <div class="token-flow">
-            <h3>🔄 令牌使用流程</h3>
-            
-            <div class="flow-diagram">
-                <div class="flow-step">
-                    <div class="flow-icon" style="background: #4CAF50;">👤</div>
-                    <div class="flow-title">选择任务</div>
-                    <div class="flow-desc">根据技能和时间选择合适的任务</div>
+                <!-- 令牌概览 -->
+                <div class="token-overview">
+                    <div class="token-card token-normal">
+                        <div class="token-header">
+                            <div class="token-icon">🎫</div>
+                            <div class="token-info">
+                                <h3>普通令牌</h3>
+                                <div class="token-count" id="normalTokens">3</div>
+                            </div>
+                        </div>
+                        <div class="token-description">
+                            占90%的令牌个数，可以锁定一个普通任务。适用于大部分开发任务和日常工作。
+                        </div>
+                        <div class="token-actions">
+                            <button class="btn btn-primary" onclick="useToken('normal')">使用令牌</button>
+                            <button class="btn btn-secondary" onclick="viewDetails('normal')">查看详情</button>
+                        </div>
+                    </div>
+
+                    <div class="token-card token-preview">
+                        <div class="token-header">
+                            <div class="token-icon">📋</div>
+                            <div class="token-info">
+                                <h3>预约令牌</h3>
+                                <div class="token-count" id="previewTokens">1</div>
+                            </div>
+                        </div>
+                        <div class="token-description">
+                            新手保护机制，在手上满任务时可以提前锁定新任务，该任务被锁定后不可被其他人领取。
+                        </div>
+                        <div class="token-actions">
+                            <button class="btn btn-primary" onclick="useToken('preview')">预约任务</button>
+                            <button class="btn btn-secondary" onclick="viewDetails('preview')">查看详情</button>
+                        </div>
+                    </div>
+
+                    <div class="token-card token-review">
+                        <div class="token-header">
+                            <div class="token-icon">🔍</div>
+                            <div class="token-info">
+                                <h3>审查令牌</h3>
+                                <div class="token-count" id="reviewTokens">2</div>
+                            </div>
+                        </div>
+                        <div class="token-description">
+                            专门用于执行代码审查任务，提升代码质量和团队协作效率。
+                        </div>
+                        <div class="token-actions">
+                            <button class="btn btn-primary" onclick="useToken('review')">审查代码</button>
+                            <button class="btn btn-secondary" onclick="viewDetails('review')">查看详情</button>
+                        </div>
+                    </div>
+
+                    <div class="token-card token-queue">
+                        <div class="token-header">
+                            <div class="token-icon">⏱️</div>
+                            <div class="token-info">
+                                <h3>排队令牌</h3>
+                                <div class="token-count" id="queueTokens">0</div>
+                            </div>
+                        </div>
+                        <div class="token-description">
+                            在手上满任务时可以标记新任务，任务可被多次标记，优先被第一位接取的人领走。
+                        </div>
+                        <div class="token-actions">
+                            <button class="btn btn-primary" onclick="useToken('queue')">排队任务</button>
+                            <button class="btn btn-secondary" onclick="viewDetails('queue')">查看详情</button>
+                        </div>
+                    </div>
+
+                    <div class="token-card token-streak">
+                        <div class="token-header">
+                            <div class="token-icon">⚡</div>
+                            <div class="token-info">
+                                <h3>连胜令牌</h3>
+                                <div class="token-count" id="streakTokens">1</div>
+                            </div>
+                        </div>
+                        <div class="token-description">
+                            用于接取不重要的支线任务，允许延时，会被惩罚，但不会打断连胜记录。
+                        </div>
+                        <div class="token-actions">
+                            <button class="btn btn-primary" onclick="useToken('streak')">使用连胜</button>
+                            <button class="btn btn-secondary" onclick="viewDetails('streak')">查看详情</button>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="flow-step">
-                    <div class="flow-icon" style="background: #FF9800;">🎫</div>
-                    <div class="flow-title">使用令牌</div>
-                    <div class="flow-desc">消耗对应类型的令牌锁定任务</div>
+
+                <!-- 使用记录 -->
+                <div class="token-usage">
+                    <h3>📊 令牌使用记录</h3>
+                    
+                    <div class="usage-tabs">
+                        <button class="tab-button active" onclick="switchTab('recent')">最近使用</button>
+                        <button class="tab-button" onclick="switchTab('statistics')">使用统计</button>
+                        <button class="tab-button" onclick="switchTab('earning')">获取记录</button>
+                    </div>
+
+                    <div id="recent" class="tab-content active">
+                        <div class="usage-record">
+                            <div class="record-icon" style="background: #4CAF50;">🎫</div>
+                            <div class="record-info">
+                                <div class="record-title">使用普通令牌 - API优化任务</div>
+                                <div class="record-meta">任务难度：中等 · 预计2天完成</div>
+                            </div>
+                            <div class="record-time">2小时前</div>
+                        </div>
+                        
+                        <div class="usage-record">
+                            <div class="record-icon" style="background: #2196F3;">🔍</div>
+                            <div class="record-info">
+                                <div class="record-title">使用审查令牌 - 用户注册流程审查</div>
+                                <div class="record-meta">代码质量评分：9.2 · 提出3条建议</div>
+                            </div>
+                            <div class="record-time">1天前</div>
+                        </div>
+                        
+                        <div class="usage-record">
+                            <div class="record-icon" style="background: #FF9800;">📋</div>
+                            <div class="record-info">
+                                <div class="record-title">使用预约令牌 - 数据库迁移任务</div>
+                                <div class="record-meta">预约成功 · 将于明天开始执行</div>
+                            </div>
+                            <div class="record-time">2天前</div>
+                        </div>
+                    </div>
+
+                    <div id="statistics" class="tab-content">
+                        <div class="simulation-result">
+                            <div class="result-item">
+                                <span>普通令牌使用次数</span>
+                                <strong>47次</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>审查令牌使用次数</span>
+                                <strong>23次</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>预约令牌使用次数</span>
+                                <strong>12次</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>平均任务完成时间</span>
+                                <strong>2.3天</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>令牌使用效率</span>
+                                <strong>94.5%</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="earning" class="tab-content">
+                        <div class="usage-record">
+                            <div class="record-icon" style="background: #4CAF50;">+</div>
+                            <div class="record-info">
+                                <div class="record-title">等级提升奖励</div>
+                                <div class="record-meta">达到15级 · 获得2个普通令牌</div>
+                            </div>
+                            <div class="record-time">3天前</div>
+                        </div>
+                        
+                        <div class="usage-record">
+                            <div class="record-icon" style="background: #2196F3;">+</div>
+                            <div class="record-info">
+                                <div class="record-title">连续完成任务奖励</div>
+                                <div class="record-meta">连续30天 · 获得1个审查令牌</div>
+                            </div>
+                            <div class="record-time">1周前</div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="flow-step">
-                    <div class="flow-icon" style="background: #2196F3;">⚡</div>
-                    <div class="flow-title">执行任务</div>
-                    <div class="flow-desc">在规定时间内完成任务开发</div>
-                </div>
-                
-                <div class="flow-step">
-                    <div class="flow-icon" style="background: #9C27B0;">✅</div>
-                    <div class="flow-title">获得奖励</div>
-                    <div class="flow-desc">获得经验、令牌和声誉奖励</div>
-                </div>
+
+
             </div>
         </div>
-    </main>
+    </div>
 
     <script>
         // 令牌数量数据

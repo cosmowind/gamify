@@ -5,7 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>人物面板 - According.Work 游戏化平台</title>
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* 头部区域样式 */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #666;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .level-badge {
+            background: #ff6b6b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
         .character-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -451,287 +540,302 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <a href="index.html">According.Work 游戏化平台</a>
+    <div class="container">
+            <!-- 头部区域 -->
+            <div class="header">
+                <div class="header-top">
+                    <div class="header-nav">
+                        <div class="logo">According.Work</div>
+                        <ul class="nav-menu">
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="level-calculator.html">等级计算器</a></li>
+                            <li><a href="task-center.html">任务中心</a></li>
+                            <li><a href="character-panel.html" class="active">人物面板</a></li>
+                            <li><a href="token-system.html">令牌系统</a></li>
+                            <li><a href="github-skills.html">GitHub技能</a></li>
+                        </ul>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">张三</div>
+                        <div class="user-stats">
+                            <div class="stat-item">
+                                <span>AW等级</span>
+                                <span class="level-badge">Lv.15</span>
+                            </div>
+                            <div class="stat-item">
+                                <span>经验值</span>
+                                <span class="stat-value">8,450</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="level-calculator.html">等级计算器</a></li>
-                    <li><a href="task-center.html">任务中心</a></li>
-                    <li><a href="character-panel.html" class="active">人物面板</a></li>
-                    <li><a href="token-system.html">令牌系统</a></li>
-                    <li><a href="github-skills.html">GitHub技能</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <main class="character-container">
-        <!-- 左侧：角色卡 -->
-        <div class="character-card">
-            <div class="avatar-section">
-                <div class="avatar">👨‍💻</div>
-                <div class="character-name">Wind</div>
-                <div class="character-title">积极贡献者 · 代码审查官</div>
             </div>
             
-            <div class="level-display">
-                <div>努力等级</div>
+            <div class="character-container">
+                <!-- 左侧：角色卡 -->
+                <div class="character-card">
+                    <div class="avatar-section">
+                        <div class="avatar">👨‍💻</div>
+                        <div class="character-name">Wind</div>
+                        <div class="character-title">积极贡献者 · 代码审查官</div>
+                    </div>
+                    
+                                <div class="level-display">
+                <div>AW等级</div>
                 <div class="level-number">15</div>
-                <div class="exp-bar">
-                    <div class="exp-fill"></div>
+                        <div class="exp-bar">
+                            <div class="exp-fill"></div>
+                        </div>
+                        <div>8,450 / 13,000 EXP</div>
+                                        <div class="effort-note">
+                    💡 AW等级反映参与度和努力程度，不代表技术能力
                 </div>
-                <div>8,450 / 13,000 EXP</div>
-                <div class="effort-note">
-                    💡 等级反映参与度和努力程度，不代表技术能力
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">247</div>
+                            <div class="stat-label">任务完成</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">89</div>
+                            <div class="stat-label">代码审查</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">32</div>
+                            <div class="stat-label">连胜记录</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">98.5%</div>
+                            <div class="stat-label">按时完成率</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-value">247</div>
-                    <div class="stat-label">任务完成</div>
+
+                <!-- 中间：主面板 -->
+                <div class="main-panel">
+                    <!-- 任务队列 -->
+                    <div class="task-queue">
+                        <h3>📋 任务队列</h3>
+                        
+                        <div class="task-item current">
+                            <div class="task-icon" style="background: #FF9800;">🔥</div>
+                            <div class="task-info">
+                                <div class="task-name">用户认证系统优化</div>
+                                <div class="task-meta">主线任务 · 高优先级 · 明天截止</div>
+                            </div>
+                            <div class="task-progress">
+                                <div class="progress-circle">70%</div>
+                                <div>进行中</div>
+                            </div>
+                        </div>
+                        
+                        <div class="task-item queued">
+                            <div class="task-icon" style="background: #2196F3;">📝</div>
+                            <div class="task-info">
+                                <div class="task-name">API文档更新</div>
+                                <div class="task-meta">支线任务 · 中优先级 · 3天后截止</div>
+                            </div>
+                            <div class="task-progress">
+                                <div class="progress-circle">0%</div>
+                                <div>排队中</div>
+                            </div>
+                        </div>
+                        
+                        <div class="task-item queued">
+                            <div class="task-icon" style="background: #4CAF50;">🐛</div>
+                            <div class="task-info">
+                                <div class="task-name">Bug修复 #1247</div>
+                                <div class="task-meta">支线任务 · 低优先级 · 5天后截止</div>
+                            </div>
+                            <div class="task-progress">
+                                <div class="progress-circle">0%</div>
+                                <div>排队中</div>
+                            </div>
+                        </div>
+                        
+                        <div class="task-item queued">
+                            <div class="task-icon" style="background: #9C27B0;">⚡</div>
+                            <div class="task-info">
+                                <div class="task-name">性能优化分析</div>
+                                <div class="task-meta">主线任务 · 高优先级 · 1周后截止</div>
+                            </div>
+                            <div class="task-progress">
+                                <div class="progress-circle">0%</div>
+                                <div>预约中</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GitHub技能面板 -->
+                    <div class="github-skills">
+                        <div class="skills-header">
+                            <div class="github-icon">🐙</div>
+                            <div class="skills-title">
+                                <h3>GitHub 技能评估</h3>
+                                <div class="system-note">
+                                    技能能力通过GitHub仓库数据客观评估，包括代码质量、项目复杂度、贡献频率等指标
+                                </div>
+                            </div>
+                            <div class="github-status">
+                                <button class="github-connect">🔗 已连接</button>
+                            </div>
+                        </div>
+
+                        <div class="github-summary">
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <div class="summary-value">23</div>
+                                    <div class="summary-label">活跃仓库</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-value">1,247</div>
+                                    <div class="summary-label">总提交数</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-value">8.7</div>
+                                    <div class="summary-label">代码质量分</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-value">156</div>
+                                    <div class="summary-label">PR合并数</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="repo-category">
+                            <h4><span>🌐</span>前端项目</h4>
+                            <div class="repo-item">
+                                <div class="repo-language language-react"></div>
+                                <div class="repo-info">
+                                    <div class="repo-name">react-dashboard-pro</div>
+                                    <div class="repo-meta">React + TypeScript · 企业级仪表盘</div>
+                                </div>
+                                <div class="repo-stats">
+                                    <div class="repo-stat">⭐ 245</div>
+                                    <div class="repo-stat">🍴 67</div>
+                                    <div class="repo-stat">📈 活跃</div>
+                                </div>
+                            </div>
+                            <div class="repo-item">
+                                <div class="repo-language language-javascript"></div>
+                                <div class="repo-info">
+                                    <div class="repo-name">vue-components-lib</div>
+                                    <div class="repo-meta">Vue.js · 组件库</div>
+                                </div>
+                                <div class="repo-stats">
+                                    <div class="repo-stat">⭐ 89</div>
+                                    <div class="repo-stat">🍴 23</div>
+                                    <div class="repo-stat">📊 维护中</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="repo-category">
+                            <h4><span>⚙️</span>后端项目</h4>
+                            <div class="repo-item">
+                                <div class="repo-language language-nodejs"></div>
+                                <div class="repo-info">
+                                    <div class="repo-name">microservice-auth</div>
+                                    <div class="repo-meta">Node.js + Express · 认证服务</div>
+                                </div>
+                                <div class="repo-stats">
+                                    <div class="repo-stat">⭐ 156</div>
+                                    <div class="repo-stat">🍴 42</div>
+                                    <div class="repo-stat">🔥 热门</div>
+                                </div>
+                            </div>
+                            <div class="repo-item">
+                                <div class="repo-language language-python"></div>
+                                <div class="repo-info">
+                                    <div class="repo-name">data-analysis-toolkit</div>
+                                    <div class="repo-meta">Python + Pandas · 数据分析工具</div>
+                                </div>
+                                <div class="repo-stats">
+                                    <div class="repo-stat">⭐ 78</div>
+                                    <div class="repo-stat">🍴 19</div>
+                                    <div class="repo-stat">📈 成长中</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="repo-category">
+                            <h4><span>🛠️</span>运维项目</h4>
+                            <div class="repo-item">
+                                <div class="repo-language language-docker"></div>
+                                <div class="repo-info">
+                                    <div class="repo-name">k8s-deployment-configs</div>
+                                    <div class="repo-meta">Kubernetes · 部署配置</div>
+                                </div>
+                                <div class="repo-stats">
+                                    <div class="repo-stat">⭐ 34</div>
+                                    <div class="repo-stat">🍴 12</div>
+                                    <div class="repo-stat">🔧 工具</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-value">89</div>
-                    <div class="stat-label">代码审查</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">32</div>
-                    <div class="stat-label">连胜记录</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">98.5%</div>
-                    <div class="stat-label">按时完成率</div>
+
+                <!-- 右侧：令牌和成就 -->
+                <div class="tokens-panel">
+                    <div class="reputation-display">
+                        <div class="reputation-score">4,847</div>
+                        <div class="reputation-rank">资深贡献者</div>
+                    </div>
+                    
+                    <h3>🎯 令牌状态</h3>
+                    <div class="token-grid">
+                        <div class="token-item">
+                            <div class="token-icon token-normal">🎫</div>
+                            <div class="token-count">3</div>
+                            <div class="token-label">普通令牌</div>
+                        </div>
+                        <div class="token-item">
+                            <div class="token-icon token-preview">📋</div>
+                            <div class="token-count">1</div>
+                            <div class="token-label">预约令牌</div>
+                        </div>
+                        <div class="token-item">
+                            <div class="token-icon token-review">🔍</div>
+                            <div class="token-count">2</div>
+                            <div class="token-label">审查令牌</div>
+                        </div>
+                        <div class="token-item">
+                            <div class="token-icon token-streak">⚡</div>
+                            <div class="token-count">1</div>
+                            <div class="token-label">连胜令牌</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievements">
+                        <h4>🏆 最近成就</h4>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">🔥</div>
+                            <div class="achievement-text">连续30天完成任务</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">👨‍🏫</div>
+                            <div class="achievement-text">指导新手完成首次任务</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">💎</div>
+                            <div class="achievement-text">GitHub代码质量9.0+</div>
+                        </div>
+                        <div class="achievement-item">
+                            <div class="achievement-icon">⚡</div>
+                            <div class="achievement-text">单日完成5个任务</div>
+                        </div>
+                    </div>
+
+                    <div class="system-note">
+                        <strong>💡 双重评估系统</strong><br>
+                        等级反映平台参与度，GitHub数据评估技术能力，两者相互独立，确保公平性。
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- 中间：主面板 -->
-        <div class="main-panel">
-            <!-- 任务队列 -->
-            <div class="task-queue">
-                <h3>📋 任务队列</h3>
-                
-                <div class="task-item current">
-                    <div class="task-icon" style="background: #FF9800;">🔥</div>
-                    <div class="task-info">
-                        <div class="task-name">用户认证系统优化</div>
-                        <div class="task-meta">主线任务 · 高优先级 · 明天截止</div>
-                    </div>
-                    <div class="task-progress">
-                        <div class="progress-circle">70%</div>
-                        <div>进行中</div>
-                    </div>
-                </div>
-                
-                <div class="task-item queued">
-                    <div class="task-icon" style="background: #2196F3;">📝</div>
-                    <div class="task-info">
-                        <div class="task-name">API文档更新</div>
-                        <div class="task-meta">支线任务 · 中优先级 · 3天后截止</div>
-                    </div>
-                    <div class="task-progress">
-                        <div class="progress-circle">0%</div>
-                        <div>排队中</div>
-                    </div>
-                </div>
-                
-                <div class="task-item queued">
-                    <div class="task-icon" style="background: #4CAF50;">🐛</div>
-                    <div class="task-info">
-                        <div class="task-name">Bug修复 #1247</div>
-                        <div class="task-meta">支线任务 · 低优先级 · 5天后截止</div>
-                    </div>
-                    <div class="task-progress">
-                        <div class="progress-circle">0%</div>
-                        <div>排队中</div>
-                    </div>
-                </div>
-                
-                <div class="task-item queued">
-                    <div class="task-icon" style="background: #9C27B0;">⚡</div>
-                    <div class="task-info">
-                        <div class="task-name">性能优化分析</div>
-                        <div class="task-meta">主线任务 · 高优先级 · 1周后截止</div>
-                    </div>
-                    <div class="task-progress">
-                        <div class="progress-circle">0%</div>
-                        <div>预约中</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GitHub技能面板 -->
-            <div class="github-skills">
-                <div class="skills-header">
-                    <div class="github-icon">🐙</div>
-                    <div class="skills-title">
-                        <h3>GitHub 技能评估</h3>
-                        <div class="system-note">
-                            技能能力通过GitHub仓库数据客观评估，包括代码质量、项目复杂度、贡献频率等指标
-                        </div>
-                    </div>
-                    <div class="github-status">
-                        <button class="github-connect">🔗 已连接</button>
-                    </div>
-                </div>
-
-                <div class="github-summary">
-                    <div class="summary-grid">
-                        <div class="summary-item">
-                            <div class="summary-value">23</div>
-                            <div class="summary-label">活跃仓库</div>
-                        </div>
-                        <div class="summary-item">
-                            <div class="summary-value">1,247</div>
-                            <div class="summary-label">总提交数</div>
-                        </div>
-                        <div class="summary-item">
-                            <div class="summary-value">8.7</div>
-                            <div class="summary-label">代码质量分</div>
-                        </div>
-                        <div class="summary-item">
-                            <div class="summary-value">156</div>
-                            <div class="summary-label">PR合并数</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="repo-category">
-                    <h4><span>🌐</span>前端项目</h4>
-                    <div class="repo-item">
-                        <div class="repo-language language-react"></div>
-                        <div class="repo-info">
-                            <div class="repo-name">react-dashboard-pro</div>
-                            <div class="repo-meta">React + TypeScript · 企业级仪表盘</div>
-                        </div>
-                        <div class="repo-stats">
-                            <div class="repo-stat">⭐ 245</div>
-                            <div class="repo-stat">🍴 67</div>
-                            <div class="repo-stat">📈 活跃</div>
-                        </div>
-                    </div>
-                    <div class="repo-item">
-                        <div class="repo-language language-javascript"></div>
-                        <div class="repo-info">
-                            <div class="repo-name">vue-components-lib</div>
-                            <div class="repo-meta">Vue.js · 组件库</div>
-                        </div>
-                        <div class="repo-stats">
-                            <div class="repo-stat">⭐ 89</div>
-                            <div class="repo-stat">🍴 23</div>
-                            <div class="repo-stat">📊 维护中</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="repo-category">
-                    <h4><span>⚙️</span>后端项目</h4>
-                    <div class="repo-item">
-                        <div class="repo-language language-nodejs"></div>
-                        <div class="repo-info">
-                            <div class="repo-name">microservice-auth</div>
-                            <div class="repo-meta">Node.js + Express · 认证服务</div>
-                        </div>
-                        <div class="repo-stats">
-                            <div class="repo-stat">⭐ 156</div>
-                            <div class="repo-stat">🍴 42</div>
-                            <div class="repo-stat">🔥 热门</div>
-                        </div>
-                    </div>
-                    <div class="repo-item">
-                        <div class="repo-language language-python"></div>
-                        <div class="repo-info">
-                            <div class="repo-name">data-analysis-toolkit</div>
-                            <div class="repo-meta">Python + Pandas · 数据分析工具</div>
-                        </div>
-                        <div class="repo-stats">
-                            <div class="repo-stat">⭐ 78</div>
-                            <div class="repo-stat">🍴 19</div>
-                            <div class="repo-stat">📈 成长中</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="repo-category">
-                    <h4><span>🛠️</span>运维项目</h4>
-                    <div class="repo-item">
-                        <div class="repo-language language-docker"></div>
-                        <div class="repo-info">
-                            <div class="repo-name">k8s-deployment-configs</div>
-                            <div class="repo-meta">Kubernetes · 部署配置</div>
-                        </div>
-                        <div class="repo-stats">
-                            <div class="repo-stat">⭐ 34</div>
-                            <div class="repo-stat">🍴 12</div>
-                            <div class="repo-stat">🔧 工具</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 右侧：令牌和成就 -->
-        <div class="tokens-panel">
-            <div class="reputation-display">
-                <div class="reputation-score">4,847</div>
-                <div class="reputation-rank">资深贡献者</div>
-            </div>
-            
-            <h3>🎯 令牌状态</h3>
-            <div class="token-grid">
-                <div class="token-item">
-                    <div class="token-icon token-normal">🎫</div>
-                    <div class="token-count">3</div>
-                    <div class="token-label">普通令牌</div>
-                </div>
-                <div class="token-item">
-                    <div class="token-icon token-preview">📋</div>
-                    <div class="token-count">1</div>
-                    <div class="token-label">预约令牌</div>
-                </div>
-                <div class="token-item">
-                    <div class="token-icon token-review">🔍</div>
-                    <div class="token-count">2</div>
-                    <div class="token-label">审查令牌</div>
-                </div>
-                <div class="token-item">
-                    <div class="token-icon token-streak">⚡</div>
-                    <div class="token-count">1</div>
-                    <div class="token-label">连胜令牌</div>
-                </div>
-            </div>
-            
-            <div class="achievements">
-                <h4>🏆 最近成就</h4>
-                <div class="achievement-item">
-                    <div class="achievement-icon">🔥</div>
-                    <div class="achievement-text">连续30天完成任务</div>
-                </div>
-                <div class="achievement-item">
-                    <div class="achievement-icon">👨‍🏫</div>
-                    <div class="achievement-text">指导新手完成首次任务</div>
-                </div>
-                <div class="achievement-item">
-                    <div class="achievement-icon">💎</div>
-                    <div class="achievement-text">GitHub代码质量9.0+</div>
-                </div>
-                <div class="achievement-item">
-                    <div class="achievement-icon">⚡</div>
-                    <div class="achievement-text">单日完成5个任务</div>
-                </div>
-            </div>
-
-            <div class="system-note">
-                <strong>💡 双重评估系统</strong><br>
-                等级反映平台参与度，GitHub数据评估技术能力，两者相互独立，确保公平性。
-            </div>
-        </div>
-    </main>
+    </div>
 
     <script>
         // 模拟动态数据更新
