@@ -322,5 +322,346 @@ class DataUtils {
     }
 }
 
+// 统一数据管理系统
+class DataManager {
+    constructor() {
+        this.initializeData();
+    }
+
+    // 初始化数据
+    initializeData() {
+        // 个人信息模板
+        if (!localStorage.getItem('userProfile')) {
+            const defaultUserProfile = {
+                id: 'user_001',
+                name: '张开发',
+                level: 3,
+                exp: 2450,
+                expToNext: 1550,
+                totalExp: 4000,
+                reputation: 85,
+                avatar: 'default-avatar.png',
+                title: '前端工程师',
+                skills: {
+                    frontend: { level: 8, exp: 1200 },
+                    backend: { level: 6, exp: 800 },
+                    database: { level: 5, exp: 600 },
+                    devops: { level: 4, exp: 300 }
+                },
+                tokens: {
+                    normal: 3,
+                    review: 2,
+                    reserve: 1,
+                    queue: 0,
+                    streak: 1
+                },
+                achievements: ['code_reviewer', 'quick_finisher', 'team_player'],
+                currentTasks: ['task_001', 'task_003'],
+                taskQueue: ['task_005'],
+                stats: {
+                    tasksCompleted: 23,
+                    successRate: 94,
+                    avgCompletionTime: 2.3,
+                    streakCount: 7,
+                    reviewsGiven: 15,
+                    codeQuality: 4.2
+                }
+            };
+            localStorage.setItem('userProfile', JSON.stringify(defaultUserProfile));
+        }
+
+        // 任务信息模板
+        if (!localStorage.getItem('taskData')) {
+            const defaultTasks = {
+                available: [
+                    {
+                        id: 'task_002',
+                        title: '用户认证系统优化',
+                        description: '重构用户认证系统，实现JWT token刷新机制，添加多因子认证功能，提升系统安全性。',
+                        type: 'main', // main主线, side支线
+                        priority: 'high', // high高, medium中, low低
+                        difficulty: 'medium', // easy简单, medium中等, hard困难, expert专家
+                        baseReward: 8,
+                        skillRequirements: ['backend', 'security'],
+                        estimatedTime: 5,
+                        deadline: 5,
+                        status: 'available',
+                        requiredLevel: 2,
+                        tags: ['backend', 'fullstack', 'security']
+                    },
+                    {
+                        id: 'task_004',
+                        title: '商品详情页性能优化',
+                        description: '优化商品详情页加载速度，减少首屏渲染时间，实现图片懒加载。',
+                        type: 'side',
+                        priority: 'medium',
+                        difficulty: 'easy',
+                        baseReward: 3,
+                        skillRequirements: ['frontend'],
+                        estimatedTime: 2,
+                        deadline: 3,
+                        status: 'available',
+                        requiredLevel: 1,
+                        tags: ['frontend', 'performance']
+                    },
+                    {
+                        id: 'task_006',
+                        title: '数据库查询优化',
+                        description: '分析并优化慢查询，添加合适的索引，提升数据库性能。',
+                        type: 'main',
+                        priority: 'high',
+                        difficulty: 'hard',
+                        baseReward: 12,
+                        skillRequirements: ['database', 'backend'],
+                        estimatedTime: 7,
+                        deadline: 10,
+                        status: 'available',
+                        requiredLevel: 4,
+                        tags: ['database', 'performance', 'backend']
+                    }
+                ],
+                inProgress: [
+                    {
+                        id: 'task_001',
+                        title: '前端组件库重构',
+                        description: '重构React组件库，提升复用性和性能。',
+                        type: 'main',
+                        priority: 'high',
+                        difficulty: 'medium',
+                        baseReward: 10,
+                        skillRequirements: ['frontend'],
+                        estimatedTime: 7,
+                        deadline: 3,
+                        status: 'in_progress',
+                        assignee: 'user_001',
+                        progress: 60,
+                        startDate: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000).toISOString(),
+                        tags: ['frontend', 'react']
+                    },
+                    {
+                        id: 'task_003',
+                        title: 'API文档编写',
+                        description: '为新开发的API编写详细文档。',
+                        type: 'side',
+                        priority: 'medium',
+                        difficulty: 'easy',
+                        baseReward: 4,
+                        skillRequirements: ['documentation'],
+                        estimatedTime: 3,
+                        deadline: 2,
+                        status: 'in_progress',
+                        assignee: 'user_001',
+                        progress: 30,
+                        startDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
+                        tags: ['documentation']
+                    }
+                ],
+                completed: [
+                    {
+                        id: 'task_005',
+                        title: '登录页面重构',
+                        description: '重新设计登录页面UI，提升用户体验。',
+                        type: 'side',
+                        priority: 'low',
+                        difficulty: 'easy',
+                        baseReward: 3,
+                        skillRequirements: ['frontend'],
+                        estimatedTime: 2,
+                        status: 'completed',
+                        assignee: 'user_001',
+                        completedDate: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                        actualTime: 1.5,
+                        rating: 4.5,
+                        tags: ['frontend', 'ui']
+                    }
+                ]
+            };
+            localStorage.setItem('taskData', JSON.stringify(defaultTasks));
+        }
+    }
+
+    // 获取用户信息
+    getUserProfile() {
+        return JSON.parse(localStorage.getItem('userProfile'));
+    }
+
+    // 更新用户信息
+    updateUserProfile(updates) {
+        const currentProfile = this.getUserProfile();
+        const updatedProfile = { ...currentProfile, ...updates };
+        localStorage.setItem('userProfile', JSON.stringify(updatedProfile));
+        this.notifyDataUpdate('userProfile', updatedProfile);
+        return updatedProfile;
+    }
+
+    // 获取任务数据
+    getTaskData() {
+        return JSON.parse(localStorage.getItem('taskData'));
+    }
+
+    // 更新任务数据
+    updateTaskData(updates) {
+        const currentData = this.getTaskData();
+        const updatedData = { ...currentData, ...updates };
+        localStorage.setItem('taskData', JSON.stringify(updatedData));
+        this.notifyDataUpdate('taskData', updatedData);
+        return updatedData;
+    }
+
+    // 添加新任务
+    addTask(task) {
+        const taskData = this.getTaskData();
+        task.id = 'task_' + Date.now();
+        task.status = 'available';
+        taskData.available.push(task);
+        this.updateTaskData(taskData);
+        return task;
+    }
+
+    // 接取任务
+    assignTask(taskId, userId) {
+        const taskData = this.getTaskData();
+        const taskIndex = taskData.available.findIndex(t => t.id === taskId);
+        
+        if (taskIndex !== -1) {
+            const task = taskData.available[taskIndex];
+            task.status = 'in_progress';
+            task.assignee = userId;
+            task.progress = 0;
+            task.startDate = new Date().toISOString();
+            
+            taskData.available.splice(taskIndex, 1);
+            taskData.inProgress.push(task);
+            
+            // 更新用户当前任务
+            const userProfile = this.getUserProfile();
+            userProfile.currentTasks.push(taskId);
+            this.updateUserProfile(userProfile);
+            
+            this.updateTaskData(taskData);
+            return task;
+        }
+        return null;
+    }
+
+    // 完成任务
+    completeTask(taskId, rating = 5) {
+        const taskData = this.getTaskData();
+        const taskIndex = taskData.inProgress.findIndex(t => t.id === taskId);
+        
+        if (taskIndex !== -1) {
+            const task = taskData.inProgress[taskIndex];
+            task.status = 'completed';
+            task.completedDate = new Date().toISOString();
+            task.rating = rating;
+            
+            taskData.inProgress.splice(taskIndex, 1);
+            taskData.completed.push(task);
+            
+            // 更新用户信息
+            const userProfile = this.getUserProfile();
+            const taskIndexInUser = userProfile.currentTasks.indexOf(taskId);
+            if (taskIndexInUser !== -1) {
+                userProfile.currentTasks.splice(taskIndexInUser, 1);
+            }
+            userProfile.stats.tasksCompleted++;
+            userProfile.exp += task.baseReward;
+            
+            this.updateUserProfile(userProfile);
+            this.updateTaskData(taskData);
+            return task;
+        }
+        return null;
+    }
+
+    // 数据更新通知
+    notifyDataUpdate(dataType, data) {
+        window.dispatchEvent(new CustomEvent('dataUpdate', { 
+            detail: { type: dataType, data: data } 
+        }));
+    }
+
+    // 获取可接取的任务（根据用户等级过滤）
+    getAvailableTasks(userLevel = null) {
+        const taskData = this.getTaskData();
+        const userProfile = userLevel !== null ? { level: userLevel } : this.getUserProfile();
+        
+        return taskData.available.filter(task => 
+            task.requiredLevel <= userProfile.level
+        );
+    }
+}
+
+// 全局数据管理器实例
+window.dataManager = new DataManager();
+
+// 工具函数
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 1) return '1天前';
+    if (diffDays < 7) return `${diffDays}天前`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)}周前`;
+    return `${Math.floor(diffDays / 30)}月前`;
+}
+
+function formatTimeLeft(days) {
+    if (days < 0) return `超时${Math.abs(days)}天`;
+    if (days === 0) return '今天截止';
+    if (days === 1) return '明天截止';
+    return `${days}天后截止`;
+}
+
+function getPriorityColor(priority) {
+    const colors = {
+        high: '#ff4757',
+        medium: '#ffa502',
+        low: '#2ed573'
+    };
+    return colors[priority] || '#ddd';
+}
+
+function getDifficultyLabel(difficulty) {
+    const labels = {
+        easy: '简单',
+        medium: '中等',
+        hard: '困难',
+        expert: '专家'
+    };
+    return labels[difficulty] || difficulty;
+}
+
+function getTypeLabel(type) {
+    const labels = {
+        main: '主线',
+        side: '支线'
+    };
+    return labels[type] || type;
+}
+
+// 添加空状态样式
+const emptyMessageStyle = `
+    .empty-message {
+        text-align: center;
+        padding: 20px;
+        color: #666;
+        font-size: 14px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        margin: 10px 0;
+    }
+`;
+
+// 动态添加样式
+if (!document.getElementById('empty-message-style')) {
+    const style = document.createElement('style');
+    style.id = 'empty-message-style';
+    style.textContent = emptyMessageStyle;
+    document.head.appendChild(style);
+}
+
 // 初始化通用功能
 CommonUtils.init(); 
